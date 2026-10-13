@@ -1,0 +1,2159 @@
+
+
+menor lance
+DOCUMENTO MESTRE
+arremate
+Leilão reverso de serviços locais
+Produto, negócio, design e implementação
+Você diz o que precisa. O mercado diz quanto custa.
+Você decide.
+VERSÃO
+2.1 unificada
+DATA
+Outubro de 2026
+STATUS
+Conceito para validação
+BASE
+4 documentos
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.02
+00 / SEÇÃO
+Sumário
+Versão unificada. Parte de quatro fontes: a versão anterior (Rodada) e os três documentos
+Arremate (produto, telas e UX, microinterações). A seção 1 mostra a auditoria; o restante é o
+documento final.
+01Auditoria dos quatro documentosO que cada um tem de melhor, o que faltava, conflitos e decisões
+02Resumo executivoFicha do produto e as apostas que decidem o jogo
+03Problema e oportunidadeDor dos dois lados, mercado e posicionamento
+04MarcaNome, arquétipo, voz e logo
+05Público-alvo e personasQuem contrata, quem fornece, segmentos
+06Como funcionaJornada do cliente e do fornecedor
+07Regras de negócioRN01 a RN22, estados e ranking
+08Casos de usoFluxos e quatro casos narrados
+09Monetização e escopoFases, planos, MVP e V2
+10Inventário de telas35 telas, com fase de entrega
+11Design systemPaleta, tipografia, regras de UI, ícones, imagens, tokens CSS
+12Telas principaisWireframes desktop e mobile
+13Microinterações e feedbackComponentes, durações, erros, estados vazios
+14Filtros e ordenaçãoLógica por tela
+15Landing pageCliente e fornecedor, com textos
+16Microcopy e vozComo escrever, palavras proibidas e bem-vindas
+17Arquitetura técnicaStack, dados, tempo real, notificações
+18Roadmap, métricas e riscosValidação antes de construir
+19Checklist de qualidadeRevisão antes de publicar qualquer tela
+20Teste de usabilidadeRoteiro para validar com 5 clientes e 5 fornecedores
+21Prompt para IAPrompt completo para gerar o MVP
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.03
+01 / SEÇÃO
+Auditoria dos quatro documentos
+Cada documento foi lido contra os outros. O critério: manter o que é mais forte, corrigir o que
+se contradiz e cortar o que não se sustenta.
+DOCUMENTOPONTOS FORTESLACUNAS E PROBLEMAS
+Rodada (versão
+anterior)
+Regras de negócio detalhadas, visibilidade
+selada dos lances, extensão anti-sniping, ranking
+composto, unit economics, riscos honestos,
+piloto manual antes de construir, modelo de
+dados e prompt com critérios de aceite,
+wireframes desenhados.
+Sem marca, logo, inventário de telas,
+microinterações, filtros, estados vazios e
+microcopy. Sem planos do fornecedor nem
+relatório pós-leilão. Sinal via Pix já no MVP é
+pesado demais.
+Arremate A:
+produto
+Nome forte, arquétipo e voz, jornadas completas,
+planos de assinatura, relatório "por que perdi",
+lance anômalo, antifraude com selfie, casos
+narrados, landing do fornecedor, roadmap com
+entrevistas.
+Números inventados (60% dos orçamentos, 8
+min, 22%, +500 serviços). Planos inconsistentes
+(R$ 49,90 com 10 lances versus FAQ de 3
+lances grátis). Teto oculto contraria a ideia
+original. Sem unit economics.
+Arremate B: telas
+e UX
+Inventário de telas, estrutura de cada tela, 27
+regras anti "cara de IA", direção de imagens,
+logo, ícones, microcopy, checklist.
+Diz 24 telas e depois 33; a soma real é 35.
+Regras que se contradizem entre si. Anel de foco
+âmbar sem contraste. Logo descrita de forma
+vaga.
+Arremate C:
+microinterações
+Especificação por componente, tabela de
+durações, feedbacks, filtros, ordenação, matriz
+de estados, acessibilidade e performance.
+Vibração por navigator.vibrate não funciona no
+iOS. Animações de 400 e 800 ms fora da própria
+regra de 150 a 300 ms. Hover de card com borda
+e sombra juntas.
+O que faltava na versão anterior e entrou
+•Marca: nome Arremate, arquétipo do Árbitro, voz, logo e ícones (A e B).
+•Produto: planos do fornecedor, relatório pós-leilão, lance anômalo, selfie e uma conta por CPF, limite de 3
+leilões por cliente, landing do fornecedor, casos narrados (A).
+•Design e UX: 35 telas, 27 regras de UI, direção de imagens e ilustrações, microcopy, checklist (B).
+•Interação: especificação de componentes, durações, feedbacks, filtros, ordenação, estados e acessibilidade
+(C).
+•Mantido da versão anterior: regras de visibilidade, anti-sniping, ranking, unit economics, riscos, piloto
+concierge, modelo de dados e critérios de aceite.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.04
+Conflitos entre os documentos e a decisão tomada
+TEMACONFLITODECISÃO
+Nome
+Rodada (anterior) ou Arremate (A,
+B, C)
+Arremate. Arrematar é o ato de fechar o leilão, o sentido é direto.
+Checar INPI e domínio antes de investir na marca.
+CorAzul (anterior) ou âmbar (A, B, C)Âmbar como cor de ação, tinta e off-white como base, verde só
+para sucesso. Âmbar puro não vai em texto sobre fundo claro
+(usar #B45309).
+Orçamento
+máximo
+Oculto (A) ou visível (ideia original e
+anterior)
+Visível por padrão; o cliente pode ocultar. Se oculto, lance acima
+do teto é aceito e marcado só para o cliente.
+PagamentoSinal retido no MVP (anterior) ou
+sem pagamento no MVP (A)
+MVP sem intermediar pagamento. Sinal e escrow com parceiro
+regulado na V2.
+ReceitaComissão (anterior) ou assinatura
+(A)
+Piloto gratuito, depois assinatura do fornecedor. Comissão só
+quando houver pagamento na plataforma.
+Duração do
+leilão
+6 a 72 h (anterior) ou 24 h a 7 dias
+(A)
+6 h a 7 dias, padrão de 48 h.
+Ranking
+50/25/15/10 (anterior) ou 60/25/15
+(C)
+Um único score "Recomendados": preço 45, reputação 25, prazo
+15, confiabilidade 10, completude 5, configurável.
+BackendFirebase (A) ou Supabase (anterior)Supabase: SQL para ranking, RLS e Realtime nativos, e já é
+parte da stack usada.
+Botão primárioUm por tela (B), mas "Arrematar"
+em cada card (B, C)
+Um primário âmbar por região de decisão. No card do melhor
+lance, âmbar; nos demais, botão escuro.
+Sombra ou
+borda
+Regra B proíbe os dois; hover de
+card em C usa os dois
+Hover muda só a borda e eleva 2 px. Sombra apenas em modal,
+dropdown e toast.
+Duração de
+animação
+150 a 300 ms (B) ou 400 e 800 ms
+(C)
+Transições até 300 ms. Pulsos e confete são exceções
+documentadas, limite de 1 s.
+Foco
+Anel âmbar (B, C) tem contraste
+baixo no claro
+Anel de tinta 2 px no modo claro, âmbar no escuro.
+Contagem de
+telas
+24 e 33 (B)35 telas, 27 no primeiro release.
+Vibração tátilnavigator.vibrate (C)Melhoria opcional; nada depende dela.
+Prova social
+Números e depoimentos fixos na
+landing (A, B)
+Campos ocultos até existirem dados reais do piloto. Nenhum
+número inventado vai ao ar.
+Cadastro
+"Sem cadastro até o final" (B)
+versus auth (A)
+Formulário com rascunho local; a conta é criada na hora de
+publicar.
+Dados que precisam de fonte
+R$ 100 bilhões por ano de mercado de eventos, 60% de orçamentos que não fecham, 5 a 15 dias de ciclo médio, 8
+minutos até o primeiro lance e 22% de economia aparecem nos documentos sem fonte. Neste documento eles são
+tratados como hipóteses. Só vão para a landing depois de medidos no piloto.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.05
+02 / SEÇÃO
+Resumo executivo
+Arremate é uma plataforma de leilão reverso de serviços locais. O cliente publica o que
+precisa e quanto pode pagar; fornecedores da região competem com lances em tempo real; o
+cliente escolhe e arremata.
+Frase central
+Você diz o que precisa. O mercado diz quanto custa. Você decide.
+ITEMDEFINIÇÃO
+ConceitoLeilão reverso: o cliente define escopo, data e teto; fornecedores dão lances e o cliente escolhe.
+Preço nasce da demanda, não da tabela do fornecedor.
+Cliente
+Pessoas e empresas que contratam serviços de ticket médio e alto com concorrência local:
+eventos, frete, reformas. Sempre gratuito.
+FornecedorAutônomos, MEIs e pequenas empresas que querem pedidos reais de clientes com orçamento
+definido. Plano gratuito e planos pagos.
+Verticais iniciaisBuffet, fotografia e filmagem, DJ e som, decoração. Depois frete, reforma, churrasqueiro e doces.
+RegiãoPaulínia primeiro; depois Sumaré, Hortolândia, Americana e Santa Bárbara d'Oeste.
+ReceitaAssinatura do fornecedor após o piloto; comissão quando houver pagamento na plataforma (V2).
+DiferencialPreço definido pelo cliente, comparação lado a lado, lances em tempo real, posição sem revelar
+concorrentes, relatório de por que perdeu, reputação verificada.
+EstágioConceito. Recomenda-se validar com operação manual antes de construir (seção 18).
+As apostas que decidem se funciona
+APOSTA 1
+Liquidez local
+Todo marketplace precisa de
+oferta antes de demanda. Sem
+lances rápidos, o cliente não volta.
+APOSTA 2
+Escopo comparável
+Só dá para comparar preço
+quando o que está incluso é claro.
+O formulário de lance resolve.
+APOSTA 3
+Confiança e retenção
+Verificação, reputação e relatório
+pós-leilão mantêm as duas pontas
+dentro da plataforma.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.06
+03 / SEÇÃO
+Problema e oportunidade
+CLIENTE
+Para quem contrata
+Orçamento lento e opaco: cada fornecedor responde
+em dias e cobra um valor diferente pelo mesmo serviço.
+Sem referência de preço justo. A negociação se
+espalha entre WhatsApp, ligações e visitas, sem
+histórico nem comparação. Quem tem data próxima
+corre contra o relógio.
+FORNECEDOR
+Para quem fornece
+Ciclo de venda longo: responde-se a vários orçamentos
+e poucos retornam. Não se sabe contra quem se
+compete nem por que se perdeu. Depende de
+indicação. Cada proposta é feita à mão, sem versão
+nem acompanhamento. Datas vagas na agenda são
+receita perdida.
+Oportunidade
+Serviços de evento, frete e reforma têm ticket alto, forte concorrência local e decisão guiada por preço e
+confiança. Em mercados assim, o cliente já sabe quanto pode gastar e o fornecedor sabe quanto precisa cobrar.
+O leilão reverso põe os dois na mesma mesa, com regras claras.
+Tamanho de mercado
+Os documentos citam mais de R$ 100 bilhões por ano em serviços de evento, sem fonte. Trate como hipótese e
+confirme em ABEOC, Sebrae e IBGE. Para o plano, o número que importa é o mercado endereçável da região de
+lançamento: pedidos por mês x ticket médio x receita por pedido.
+Comparativo de modelos
+CRITÉRIOORÇAMENTO POR
+WHATSAPP
+DIRETÓRIO / VENDA DE
+CONTATOS
+ARREMATE
+Quem define o
+preço
+FornecedorFornecedorCliente define o teto; fornecedores
+competem
+Tempo até
+comparar
+DiasHoras a diasMinutos a horas, com contador
+ComparabilidadeBaixa, formatos
+diferentes
+MédiaAlta: valor, prazo e itens inclusos no
+mesmo padrão
+Custo do
+fornecedor
+TempoPaga pelo contatoGratuito até o limite; assinatura opcional
+AprendizadoNenhumPoucoRelatório de por que perdeu
+Posicionamento honesto
+Leilão reverso já existe em compras corporativas e em plataformas de "diga seu preço". A novidade é aplicar à
+contratação local de serviços, com fornecedores verificados, lances em tempo real, comparação por escopo e
+relatório de perda. A marca deve se apoiar nisso, sem prometer ineditismo.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.07
+04 / SEÇÃO
+Marca
+Arremate é o ato de vencer um leilão e fechar um negócio. A palavra é brasileira, memorável e
+descreve a mecânica do produto.
+Posicionamento e arquétipo
+Arremate não é um catálogo de serviços. É um leilão reverso. O cliente define o preço e o mercado compete. O
+arquétipo é o Árbitro: não é o vendedor nem o comprador, é quem garante que a disputa seja justa, transparente
+e rápida.
+ITEMDEFINIÇÃO
+Alternativas de nomeLance, Pregão, Disputa, VizinhOferta. Verificar disponibilidade de domínio, INPI e redes antes de
+decidir.
+Tom de voz
+Direto, sem jargão. Confiante, sem arrogância. Brasileiro, sem regionalismo. Sério, sem
+formalidade excessiva. Transparente, sem promessa mágica.
+AssinaturaVocê diz o que precisa. O mercado diz quanto custa. Você decide.
+Uso do âmbarRepresenta o arremate: o momento da decisão. Aparece em poucos pontos por tela, para que
+cada aparição conte.
+Logo
+Duas direções para o briefing do designer. A proposta A foi desenhada abaixo; a B vem do documento original.
+arremate
+Principal, fundo claro
+arremate
+Invertida, fundo escuroApp icon, favicon 32 e 16 px
+Esboço ilustrativo da direção A. O símbolo são três barras descendentes: cada lance menor que o anterior, com o menor em âmbar.
+Funciona em 16 px e remete ao "reverso" sem usar o martelo, clichê de leilão.
+DIREÇÃOCONCEITOOBSERVAÇÃO
+A: barras descendentes
+Lances em ordem decrescente, o menor em âmbar.
+Abstrato, escalável, ligado à mecânica.
+Recomendada. Ponto final do
+wordmark em âmbar.
+B: martelo invertidoMartelo de leiloeiro com o cabo para baixo, sugerindo
+um A. Cabeça com dois traços de lances empatados.
+Mais literal e memorável, porém
+exige desenho cuidadoso para não
+virar clichê.
+Regras de uso
+•Wordmark em Inter Display 700, letter-spacing de -0.02em. Versões: horizontal, vertical, só símbolo e só
+wordmark.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.08
+•Área de respiro igual à altura do símbolo. Tamanho mínimo: símbolo 16 px; horizontal 120 px; wordmark 80
+px.
+•Cores: tinta sobre claro; off-white sobre escuro; âmbar apenas em favicon e app icon sobre escuro. Nunca
+com gradiente, sombra, contorno ou rotação.
+•Contratar um designer de identidade para produtos digitais (faixa de R$ 1.500 a R$ 6.000, a confirmar). Evitar
+geradores de logo.
+05 / SEÇÃO
+Público-alvo e personas
+Personas ilustrativas, para orientar decisões. Substituir por entrevistas reais na fase de
+validação.
+Quem contrata
+EVENTO PESSOAL
+Mariana, 32
+Noiva. Buffet para 120 pessoas,
+casamento em 3 meses,
+orçamento de R$ 15.000. Cansou
+do vai e volta com fornecedores.
+PACOTE DE SERVIÇOS
+Camila, 28
+Precisa de fotógrafo, DJ e
+decoração. Valoriza avaliação e
+portfólio tanto quanto preço.
+CONDOMÍNIO E EMPRESA
+Carlos, 45
+Síndico em Sumaré. Reforma de
+fachada de 8 andares, com
+orçamento de até R$ 80.000. Quer
+garantia e histórico.
+Quem fornece
+PEQUENA EMPRESA
+Buffet de bairro
+Equipe pequena, agenda cheia no
+fim de semana e vazia no meio da
+semana. Vive de indicação.
+AUTÔNOMO
+DJ e fotógrafo autônomos
+MEI. Perde tempo em orçamento e
+quer fechar datas de baixa
+temporada.
+FRETE
+Transportadora local
+Frota pequena, ociosidade entre
+rotas. Aceita preço menor para
+preencher retorno.
+Perfil e segmentos
+SEGMENTOPERFILTICKETPRIORIDADE
+Eventos pessoais
+PF de 28 a 50 anos, cidades médias do
+interior paulista
+R$ 1.500 a 8.000Alta: entrada
+Eventos corporativosPequenas empresas, confraternizaçõesR$ 3.000 a 30.000Alta: pico em nov. e dez.
+CasamentosDecisão emocional, ciclo longo
+R$ 8.000 a 40.000
+ou mais
+Média
+Síndicos e
+condomínios
+Serviços recorrentes: jardinagem, limpeza,
+manutenção
+R$ 500 a 80.000Média: V2
+Frete e reformaAlta frequência, serviço mais padronizávelR$ 300 a 15.000Média: V2, modalidade
+menor preço
+Segmentos de fornecedor, em ordem de entrada: buffet e catering, fotografia e filmagem, DJ e sonorização, decoração, frete e
+mudança, reforma e reparos, churrasqueiro e equipe de apoio, bolos e doces.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.09
+Cliente ideal do piloto
+Quem organiza evento com data entre 2 e 6 semanas, orçamento definido e mora em Paulínia ou região. Tem
+urgência para publicar e tempo para o leilão fechar.
+06 / SEÇÃO
+Como funciona
+Cinco etapas do texto livre ao contrato. As etapas 3 e 4 acontecem juntas, em tempo real.
+1
+Publicar
+Cliente descreve a
+necessidade, a data
+e o orçamento
+2
+Notificar
+Fornecedores da
+região são avisados
+em tempo real
+3
+Dar lance
+Cada um envia valor,
+prazo e o que
+está incluso
+4
+Comparar
+Cliente filtra, ordena
+e vê a posição
+de cada lance
+5
+Arrematar
+Contrato simples e
+contato liberado
+CLIENTE
+Jornada do cliente
+1. Descreve a necessidade: serviço, descrição, data,
+local, quantidade, orçamento máximo, anexos.
+2. Aguarda lances, com aviso de cada novo lance.
+3. Compara lado a lado: valor, prazo, nota, contratos,
+portfólio e mensagem.
+4. Opcional: pede ajuste de proposta ou tira dúvida (V2:
+chat interno).
+5. Arremata: contrato simples em PDF, contato
+liberado, avaliação depois.
+FORNECEDOR
+Jornada do fornecedor
+1. Cadastro em 5 minutos, verificação por CPF ou
+CNPJ e selfie, aprovação em até 24 h.
+2. Define segmentos, raio em km, faixa de ticket e
+disponibilidade.
+3. Recebe notificação de leilões compatíveis.
+4. Dá lance com valor, prazo, itens inclusos e
+mensagem.
+5. Acompanha sua posição, sem ver concorrentes, e
+pode reduzir o lance.
+6. Ganha ou aprende: relatório com posição final e
+valor vencedor.
+Modalidades de leilão
+MODALIDADEQUANDO USARCOMO FUNCIONA
+Escolha livre (padrão)Buffet, fotografia, decoração, DJ:
+qualidade pesa
+Fornecedor vê só sua posição. Cliente vê todos os lances
+e escolhe. Ordenação "Recomendados" sugere o melhor
+equilíbrio.
+Menor preço
+Frete, mudança, serviços
+padronizados (V2)
+Fornecedor vê o menor valor atual e pode cobrir. Cliente
+pode ativar arremate automático do menor lance no
+encerramento.
+UrgenteServiço em até 72 h (V2)
+Leilão curto de 2 h, notificação prioritária, modalidade
+menor preço.
+Princípios de produto
+•O cliente decide. O sistema sugere, nunca impõe.
+•Competição por valor, não só por preço. Todo lance traz o que está incluso.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.10
+•Transparência. Prazo, extensão e cancelamento visíveis antes do primeiro clique.
+•Local primeiro. Raio, cidade e data fazem parte do pedido.
+07 / SEÇÃO
+Regras de negócio
+Regras unificadas. Números marcados como hipótese devem ser calibrados no piloto. Todas
+valem no servidor e no banco, nunca só na tela.
+IDREGRAPADRÃO / PARÂMETRO
+RN01
+Pedido só abre com categoria, data futura, cidade, escopo ou
+quantidade e orçamento máximo.
+Data mínima 24 h; urgente é modo à parte.
+RN02Cada cliente pode ter poucos leilões ativos ao mesmo tempo.Máximo de 3.
+RN03Duração do leilão limitada para fechar antes do evento.6 h a 7 dias, padrão 48 h; fecha 24 h antes
+do evento.
+RN04
+Orçamento máximo visível por padrão. Se oculto, lance acima é
+aceito e marcado só ao cliente.
+Lance acima do teto visível é rejeitado.
+RN05Só fornecedor verificado, da categoria e dentro do raio vê e dá
+lance.
+CPF ou CNPJ e selfie. Uma conta por
+CPF. Raio padrão 30 km.
+RN06Um lance ativo por fornecedor, só reduz.Redução mínima de R$ 10 ou 1%.
+Histórico gravado.
+RN07Lance exige valor, prazo, itens inclusos, validade e mensagem.Mínimo de 1 item; mensagem até 300
+caracteres.
+RN08Cliente vê todos os lances. Fornecedor vê só posição e total.Menor preço pode mostrar o menor valor
+(flag).
+RN09Anti-sniping: lance nos últimos minutos estende o prazo.+5 min, até 3 vezes (hipótese).
+RN10Cliente escolhe livremente e pode arrematar a qualquer momento.
+Score "Recomendados" configurável
+(tabela abaixo).
+RN11Lance anômalo vai para moderação e aparece ao cliente como
+"Em revisão".
+Abaixo de 50% do teto, ou de 70% da
+mediana da categoria com 10 ou mais
+contratos.
+RN12Auditoria automática de padrões suspeitos.Mais de 10 lances em menos de 1 h, IP
+repetido, várias contas.
+RN13
+Arremate gera contrato simples em PDF, recusa os demais lances
+e libera o contato. A plataforma intermedia; não é parte do serviço.
+Notificação para as duas partes.
+RN14
+Cancelamento pelo cliente logo após o arremate é gratuito.
+Cancelamento do fornecedor reabre o pedido.
+24 h sem custo. Fornecedor: penalidade de
+reputação e possível suspensão.
+RN15Avaliação bilateral obrigatória após a execução.Média abaixo de 3,5 por 3 meses
+suspende o fornecedor.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.11
+IDREGRAPADRÃO / PARÂMETRO
+RN16Relatório pós-leilão para quem perdeu, sem expor concorrentes.
+Posição final, valor vencedor, mediana da
+categoria, diferenciais.
+RN17Sem lance na metade do prazo: ampliar raio e reenviar.Raio +50%. Ao encerrar vazio, sugerir
+ajustar teto ou data.
+RN18Plano gratuito limita lances por mês; pagos liberam mais.Grátis 3 lances; Pro R$ 99,90; Prime R$
+199,90 (hipótese).
+RN19Pagamento intermediado, sinal e comissão só na V2.
+Parceiro regulado; até lá, pagamento
+direto.
+RN20Denúncias e disputas vão ao admin; decisões ficam em log.Auditoria de toda transição de estado.
+RN21Cliente com cancelamento abusivo recorrente perde acesso a
+lances.
+Critério a definir com dados do piloto.
+RN22
+LGPD: consentimento, exportação, exclusão, log de acesso,
+documentos em bucket privado.
+Obrigatório desde o MVP.
+Score "Recomendados"
+Une o antigo "melhor custo-benefício" com a ordenação "Recomendados". Pesos de partida, configuráveis.
+COMPONENTEPESOCOMO SE MEDE
+Preço45%Distância do lance até o teto: quanto menor, melhor
+Reputação25%Nota média e número de avaliações
+Prazo15%Prazo de execução comparado aos outros lances
+Confiabilidade10%Taxa de resposta e de cumprimento de contratos
+Completude do lance5%Itens inclusos detalhados e portfólio anexado
+Estados de um pedido
+RascunhoAbertoEncerradoArrematadoEm execuçãoConcluído
+Expirado
+sem lance ou sem escolha
+Cancelado
+antes ou após o arremate
+Em disputa
+até 48 h após o evento
+Os caminhos tracejados são saídas do fluxo principal. Cada transição gera evento de auditoria e notificação.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.12
+08 / SEÇÃO
+Casos de uso
+Fluxos principais e quatro histórias para guiar testes e comunicação. Os números das histórias
+são ilustrativos.
+IDCASO DE USOFLUXO PRINCIPALRESULTADO
+UC01
+Publicar necessidade
+Cliente
+Preenche formulário guiado com rascunho salvo, define
+teto e duração, cria conta na publicação (RN01 a RN04).
+Leilão aberto;
+fornecedores notificados.
+UC02
+Dar lance
+Fornecedor
+Abre o leilão, informa valor, prazo, itens e mensagem.
+Sistema valida redução mínima e anomalia (RN06,
+RN07, RN11).
+Lance ativo; fornecedor vê
+sua posição.
+UC03Comparar e arrematar
+Cliente
+Vê lances ao vivo, filtra, ordena, abre perfil e arremata
+no modal de confirmação.
+Contrato e contato liberado
+(RN13).
+UC04Reduzir lance
+Fornecedor
+Atualiza para valor menor até o encerramento; últimos
+minutos estendem o prazo (RN09).
+Nova posição, histórico
+gravado.
+UC05
+Receber relatório
+Fornecedor
+Após o encerramento, vê posição final, valor vencedor e
+diferenciais (RN16).
+Aprendizado para o
+próximo lance.
+UC06
+Moderar lance anômalo
+Admin
+Fila com lances em revisão e padrões suspeitos; aprova,
+remove ou suspende (RN11, RN12).
+Leilão íntegro, decisão em
+log.
+UC07Pedido sem lance
+Sistema
+Na metade do prazo sem lances, amplia o raio e reenvia
+avisos (RN17).
+Nova chance antes de
+expirar.
+UC08
+Concluir e avaliar
+Ambos
+Após a execução, as partes se avaliam; lembrete após
+24 h (RN15).
+Reputação atualizada.
+UC09Cancelar
+Qualquer parte
+Cliente cancela sem custo em até 24 h; se o fornecedor
+cancela, o pedido reabre (RN14).
+Reabertura prioritária.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.13
+Quatro histórias
+HISTÓRIA 1
+Casamento em Paulínia
+Mariana publica buffet para 120 pessoas com teto de
+R$ 15.000. Em horas chegam 8 lances entre R$ 11.800
+e R$ 18.500. Ela filtra por nota 4,5 ou mais, pede ajuste
+a 3 finalistas e arremata quem inclui degustação.
+HISTÓRIA 2
+Fachada em Sumaré
+Carlos, síndico, recebe 12 lances em 48 h. Filtra por
+nota, 20 contratos e garantia de 12 meses. Arremata a
+construtora que oferece 24 meses pelo mesmo valor.
+HISTÓRIA 3
+Evento corporativo
+Empresa publica foto e vídeo para 200 pessoas com
+teto de R$ 8.000. Filtra por portfólio de eventos
+corporativos e arremata em um dia.
+HISTÓRIA 4
+DJ que prospecta
+Studio de DJ em Americana sem clientes há 3 semanas
+recebe 4 avisos, dá lance em 3 e vence um casamento
+em Hortolândia. As avaliações o põem à frente nas
+notificações.
+09 / SEÇÃO
+Monetização e escopo
+Receita acompanha o amadurecimento do produto: primeiro prova de uso, depois assinatura,
+depois pagamento na plataforma.
+FASEMODELODETALHE
+PilotoGratuito para os dois ladosObjetivo é medir liquidez, taxa de fechamento e vazamento.
+Fase 1Assinatura do fornecedorGrátis: 3 lances por mês. Pro R$ 99,90: ilimitados, destaque, relatórios de
+perda. Prime R$ 199,90: prioridade de notificação e selo premium. Preços a
+validar nas entrevistas.
+Fase 2Pagamento e comissão
+Sinal por Pix com parceiro regulado, retenção e repasse. Comissão a
+calibrar, por exemplo 5% a 10% (hipótese). Zero para contratos pequenos.
+Fase 3Serviços adicionaisDestaque pago, relatórios de mercado por cidade e categoria, API para
+CRM de fornecedores, seguro de evento.
+Premissa
+O cliente nunca paga. Cobrar do cliente mata a oferta de demanda. Quem paga é o fornecedor, porque recebe
+acesso a demanda qualificada que hoje não tem.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.14
+Unit economics ilustrativo, quando houver comissão
+ITEMVALOR HIPOTÉTICOOBSERVAÇÃO
+Ticket médio contratadoR$ 2.500Mix de buffet, fotografia e DJ
+Comissão de 10%R$ 250Receita bruta por pedido
+Custo de pagamentoR$ 15 a 90Depende do meio
+Notificação, suporte e antifraudeR$ 20 a 40Cai com escala
+Margem de contribuiçãoR$ 120 a 215Antes de aquisição e estrutura
+Escopo por versão
+FUNCIONALIDADEMVPV2V3
+Publicar necessidade com rascunhoSim
+Cadastro e verificação de fornecedor (CPF ou
+CNPJ e selfie)
+Sim, revisão manualAutomática
+Lances em tempo real, posição, redução, extensãoSim
+Filtros e ordenaçãoSimFiltros salvos
+Arremate, contrato simples e contato liberadoSim
+Avaliações e reputaçãoSimSelos públicos
+Moderação de lance anômalo e painel adminBásicoCompleto
+Relatório pós-leilãoSimplesCompleto
+Notificação push e e-mailSimWhatsApp
+Planos do fornecedorGratuitoPro e Prime
+Pagamento, sinal e escrowSim
+Chat interno em tempo real e contrapropostaSim
+Modalidades menor preço e urgente; freteSim
+Pacote de serviços do mesmo eventoSim
+Aplicativo nativo, agenda integrada, novas cidadesSim
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.15
+10 / SEÇÃO
+Inventário de telas
+São 35 telas: 7 públicas, 7 de autenticação, 8 do cliente, 8 do fornecedor e 5 de admin. O
+primeiro release cobre 27 (marcadas P). As demais ficam para a V2.
+IDTELAROTAFASE
+A1Landing cliente/P
+A2Landing fornecedor/fornecedoresP
+A3Como funciona/como-funcionaV2
+A4Planos e preços/precosV2
+A5Termos de uso/termosP
+A6Privacidade/privacidadeP
+A7Erro 404/404P
+B1Login/entrarP
+B2Cadastro cliente/cadastroP
+B3Cadastro fornecedor: dados/cadastro-fornecedorP
+B4Cadastro fornecedor: verificação/cadastro-fornecedor/verificacaoP
+B5Cadastro fornecedor: segmentos e região/cadastro-fornecedor/preferenciasP
+B6Recuperar senha/recuperar-senhaP
+B7Verificação de e-mail/verificar-emailV2
+C1Dashboard do cliente/painel-clienteP
+C2Publicar necessidade/painel-cliente/novoP
+C3Confirmação de publicação/painel-cliente/novo/sucessoP
+C4Detalhe do leilão, comparar lances/painel-cliente/leilao/[id]P
+C5Perfil público do fornecedor/painel-cliente/fornecedor/[id]P
+C6Contrato (ver e baixar)/painel-cliente/contrato/[id]P
+C7Histórico de leilões/painel-cliente/historicoV2
+C8Avaliação pós-execução/painel-cliente/avaliar/[id]P
+D1Dashboard do fornecedor/painel-fornecedorP
+D2Feed de leilões/painel-fornecedor/leiloesP
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.16
+IDTELAROTAFASE
+D3Detalhe do leilão, enviar lance/painel-fornecedor/leilao/[id]P
+D4Meus lances/painel-fornecedor/lancesP
+D5Relatório pós-leilão/painel-fornecedor/relatorio/[id]V2
+D6Configurações/painel-fornecedor/configP
+D7Assinatura e cobrança/painel-fornecedor/planoV2
+D8Perfil público/painel-fornecedor/perfilP
+E1Dashboard admin/adminP
+E2Moderação de leilões/admin/leiloesP
+E3Moderação de fornecedores/admin/fornecedoresP
+E4Auditoria de lances anômalos/admin/auditoriaV2
+E5Relatórios e métricas/admin/metricasV2
+Estrutura das telas críticas
+TELAESTRUTURA E COMPORTAMENTO
+C4: comparar lances
+Topo com breadcrumb, título, status e timer fixo. Card de resumo com orçamento máximo (só o
+cliente vê). Barra de filtros e ordenação sticky. Grade de lances em 3 colunas no desktop e pilha
+no mobile. Cada card: foto, nome, selo, nota, contratos, valor em mono 32 px, prazo, mensagem
+em 3 linhas, portfólio e botões Arrematar e Ver perfil. Melhor lance com borda âmbar de 2 px e
+selo. Arremate abre modal com resumo do contrato. Estado vazio com ampulheta.
+D3: enviar lance
+Descrição completa do pedido à esquerda. Painel sticky à direita com posição atual, valor com
+máscara de R$, prazo, itens inclusos, mensagem e anexos. Regras visíveis: pode reduzir até o
+encerramento; valores dos outros não aparecem; lances anômalos são revisados. Após o envio:
+toast e painel em modo edição.
+C1: dashboard do
+cliente
+Saudação, 3 cards de resumo em mono (leilões ativos, lances recebidos, economia estimada),
+lista de leilões com status, número de lances e melhor lance, histórico recente. Estado vazio com
+cadeira e placa "aguardando".
+D1 e D2: fornecedorSaudação com contagem de leilões compatíveis, 4 cards (disponíveis, lances do mês, contratos
+ganhos, avaliação média) e feed com título, local e distância, data, escopo, número de lances.
+Orçamento máximo nunca aparece quando oculto. Bloco lateral dos últimos 30 dias.
+B1: loginDuas colunas: painel escuro com logo à esquerda; formulário de até 400 px à direita. E-mail,
+senha, "Esqueci minha senha", botão Entrar, divisor "ou" e Entrar com Google. Erros específicos,
+por exemplo "A senha está incorreta".
+E1: admin
+5 cards (leilões ativos, lances hoje, contratos do mês, fornecedores ativos, receita recorrente),
+alertas, atividade recente e categorias mais movimentadas.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.17
+11 / SEÇÃO
+Design system
+Sóbrio, preciso e confiável: um jornal financeiro moderno, não um app barulhento. O produto
+envolve dinheiro, então o visual transmite calma, clareza e velocidade.
+Paleta
+Tinta
+#0A0A0B
+Texto, botão escuro
+Grafite
+#26262B
+Bordas no escuro
+Ardósia
+#57534E
+Texto secundário
+Página
+#FAFAF9
+Fundo da página
+Linha
+#E7E5E4
+Bordas
+Âmbar
+#F59E0B
+Ação, melhor lance
+Âmbar texto
+#B45309
+Texto sobre claro
+Sucesso
+#10B981
+Arrematado
+Erro
+#EF4444
+Erros
+Âmbar é cor de ação e de arremate. Sobre fundo claro, texto e ícone âmbar usam #B45309 (contraste de cerca de 5 para 1). Para texto
+de sucesso e de erro sobre claro, usar #047857 e #DC2626. Modo escuro: página #0A0A0B, superfície #141416, borda #26262B, texto
+#FAFAF9.
+Tipografia, forma e movimento
+ELEMENTOESPECIFICAÇÃO
+FontesInter para títulos e corpo. JetBrains Mono em valores em reais, contadores e números de métricas.
+Nenhuma outra fonte.
+EscalaH1 48 a 64, H2 32 a 40, H3 24, corpo 16, micro 14. Largura máxima de texto corrido: 65 caracteres.
+EspaçamentoMúltiplos de 4: 4, 8, 12, 16, 24, 32, 48, 64, 96.
+Raios10 px em botões e inputs, 16 px em cards. Cards com borda de 1 px; sombra só em modal,
+dropdown e toast.
+BotõesAltura de 48 px; alvo de toque mínimo de 44 px. Primário âmbar com texto tinta, secundário com
+borda, ghost, escuro e destrutivo vermelho.
+FocoAnel de 2 px com offset de 2 px: tinta no claro, âmbar no escuro.
+ÍconesLucide, traço de 1,5 px, tamanhos 16, 20, 24 e 32. Nunca misturar bibliotecas.
+Movimento
+150 a 300 ms em transições; easing ease-out e cubic-bezier(0.16, 1, 0.3, 1). Respeitar
+prefers-reduced-motion.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.18
+Referências
+REFERÊNCIAO QUE APROVEITAR
+LinearMinimalismo disciplinado, tipografia precisa, modo escuro elegante.
+StripeClareza financeira, hierarquia tipográfica, uso cirúrgico de cor.
+VercelPreto e branco como base, cor como acento raro.
+Superhuman e RaycastInterface focada, atalhos, ausência de ruído, microinterações discretas.
+Arc e NotionOusadia controlada em cor e tipografia; clareza em listas densas.
+Uber e 99; WiseEstado em tempo real e contagem regressiva; transparência de valores.
+Regras de UI (27 originais, ajustadas)
+As regras evitam a estética genérica de template. Onde havia conflito, a versão ajustada prevalece.
+REGRADIRETRIZ
+1. Sem gradiente roxo-rosa-azulCor sólida; no máximo um gradiente sutil de dois tons próximos por tela.
+2. Sem emojis na interface
+Ícone vetorial no lugar. Emoji só em microcopy estratégico, nunca em botão,
+título ou menu.
+3. Contraste realTinta nos títulos e ardósia no corpo. Nunca #999 ou #CCC como texto principal.
+4. Sombra ou bordaCards com borda; sombra só em elementos elevados. Hover muda a borda, sem
+sombra.
+5. Múltiplos de 4Todo padding, margin e gap.
+6. Saltos reais de tipografiaH1 48 a 64, H2 32 a 40, H3 24, corpo 16, micro 14.
+7. Uma ou duas fontesInter e JetBrains Mono, com função clara.
+8. Nem tudo centralizadoCentralizar só hero e CTA.
+9. Linha de até 65 caracteresLargura máxima de texto corrido de 65ch.
+10. Botão primário é sagradoUm primário âmbar por região de decisão; no resto, secundário, ghost ou
+escuro.
+11. Links sem azul padrãoCor do texto com sublinhado sutil; âmbar escuro no hover.
+12. Foco sempre visívelAnel de 2 px com offset de 2 px, tinta no claro e âmbar no escuro.
+13. Ícones consistentesLucide com traço de 1,5 px.
+14. Avatar limpoCírculo, sem borda, sombra e anel juntos.
+15. Sombra com critérioSó em modal, dropdown, toast e cards flutuantes.
+16. Fundo de página diferente do de
+card
+Página #FAFAF9, card branco com borda.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.19
+REGRADIRETRIZ
+17. Animação com significadoNovo lance, abertura de modal e mudanças críticas de estado.
+18. 150 a 300 msTransições. Pulso de lance e confete são exceções de até 1 s.
+19. Sem 100vh em seçãoUsar min-height com padding vertical de pelo menos 96 px.
+20. Cores semânticas fixasSucesso verde, erro vermelho, aviso laranja. Vermelho nunca é destaque.
+21. Estados vaziosIlustração, texto e CTA em toda lista vazia.
+22. Skeleton em vez de spinnerSkeleton com a forma do conteúdo final.
+23. Erro embaixo do campoBorda vermelha, ícone e mensagem abaixo; nunca modal.
+24. Botões de formulário iguaisMesma altura (48 px), primário à direita.
+25. Alvo de toque de 44 pxQualquer elemento tocável.
+26. Sem uppercase em texto longoUppercase só em micro-rótulos de até 3 palavras.
+27. Sem estética de SaaS genéricoSem roxo, blob decorativo ou ícone 3D. A base é tinta, off-white e âmbar.
+Imagens e ilustrações
+TIPOREGRAONDE
+Mockups do produto
+(prioridade máxima)
+Em dispositivo real, com dados realistas e timestamp
+visível ("atualizado há 2 minutos"). Nunca Lorem
+ipsum.
+Hero (comparação de lances no
+celular), 3 passos de como funciona,
+aviso de novo lance.
+Fotografia realSem banco de imagens. Luz natural, fundo neutro, sem
+aperto de mão corporativo. Se não há foto real, omitir a
+seção.
+Depoimentos reais do piloto;
+fornecedor no ambiente de trabalho
+na landing do fornecedor.
+Ilustrações
+minimalistas
+Traço de 1,5 px, preto com um toque de âmbar, sem
+gradiente, 3D ou sombra. Feitas por ilustrador; não
+gerar por IA.
+Seção do problema e estados vazios.
+Fundos
+Grid de pontos (1 px, a cada 32 px, 8% de opacidade)
+ou linhas (a cada 64 px, 5%). Sem blobs nem grain
+pesado.
+Seções pontuais, com moderação.
+Ilustrações necessárias
+•O problema, "Pedir orçamento é lento": linha do tempo com 8 ligações terminando em um X.
+•O problema, "Comparar é pior": 3 PDFs desalinhados com valores diferentes.
+•O problema, "Fechar é sorte": pessoa escolhendo entre 3 portas idênticas.
+•Estado vazio do cliente: cadeira vazia com placa "aguardando". Do fornecedor: caixa de correio vazia. Antes
+do primeiro lance: ampulheta. Histórico vazio: pasta. Busca sem resultado: lupa com zero.
+•Orçamento do pacote de 6 ilustrações: a confirmar com ilustrador (referência do documento original: R$ 800 a
+R$ 3.000).
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.20
+Ícones do produto (Lucide)
+hammer e gavel (leilão e arremate), clock (timer), trophy (vitória), shield-check (verificação), star (avaliação),
+map-pin, calendar, users, briefcase (contratos), trending-up (métricas), bell, chevron-right, arrow-up-right, check,
+x, alert-circle, info, filter, search.
+Tokens de design (CSS e Tailwind v4)
+Pronto para copiar para app/globals.css. Os tokens semânticos trocam entre claro e escuro; texto em âmbar,
+verde e vermelho usa as versões com contraste. O arquivo tokens.css acompanha este PDF.
+/* Arremate - design tokens (Tailwind v4). Base para app/globals.css */
+@import "tailwindcss";
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-ink: #0A0A0B;
+  --color-graphite: #26262B;
+  --color-slate: #57534E;
+  --color-muted: #F5F5F4;
+  --color-line: #E7E5E4;
+  --color-accent: #F59E0B;
+  --color-accent-hover: #D97706;
+  --color-accent-soft: #FEF3C7;
+  --color-success: #10B981;
+  --color-success-soft: #D1FAE5;
+  --color-error: #EF4444;
+  --color-warning: #F97316;
+  --color-info: #3B82F6;
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius-sheet: 20px;
+  --ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-hover: 150ms;
+  --duration-press: 180ms;
+  --duration-modal: 250ms;
+  --duration-enter: 300ms;
+}
+/* Tokens semanticos: mudam entre claro e escuro */
+:root {
+  --bg: #FAFAF9;
+  --card: #FFFFFF;
+  --fg: #0A0A0B;
+  --fg-2: #57534E;
+  --border: #E7E5E4;
+  --ring: #0A0A0B;
+  --accent-text: #B45309;
+  --success-text: #047857;
+  --error-text: #DC2626;
+}
+.dark {
+  --bg: #0A0A0B;
+  --card: #141416;
+  --fg: #FAFAF9;
+  --fg-2: #A1A1AA;
+  --border: #26262B;
+  --ring: #F59E0B;
+  --accent-text: #F59E0B;
+  --success-text: #34D399;
+  --error-text: #F87171;
+}
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-border: var(--border);
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.21
+  --color-accent-text: var(--accent-text);
+  --color-success-text: var(--success-text);
+  --color-error-text: var(--error-text);
+}
+/* Foco visivel: tinta no claro, ambar no escuro */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+/* Valores em reais, contadores e metricas */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+/* Mobile: 16px nos campos evita zoom automatico no iOS */
+input, select, textarea { font-size: 16px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+12 / SEÇÃO
+Telas principais
+Wireframes de média fidelidade. Dados fictícios; valores em fonte mono, como será no
+produto.
+Comparação de lances (cliente)
+arremate.com.br/painel-cliente/leilao/8f2a
+arremate
+Leilões
+Recebendo lances
+Buffet para 120 pessoas
+Sáb, 17 out  |  Paulínia
+Orçamento máximo
+R$ 15.000
+ENCERRA EM
+2d 04h 18m
+4 lances recebidos
+Menor valor atual
+R$ 11.800
+Lances recebidos
+Ordenar: Recomendados
+Avaliação 4+VerificadoPrazo 7 dias3 lances encontrados  |  Limpar tudo
+Cozinha da Dona Ana
+4,9 estrelas  |  132 contratos
+Verificado
+Melhor lance
+R$ 11.800
+Pronto em 3 dias
+Arrematar
+Sabor da Praça
+4,6 estrelas  |  48 contratos
+Verificado
+Novo lance
+R$ 12.400
+Pronto em 2 dias
+Arrematar
+Buffet Jardim
+4,8 estrelas  |  210 contratos
+Verificado
+R$ 13.100
+Pronto em 5 dias
+Arrematar
+Filtros ativos em âmbar, contagem de resultados, ordenação, timer, melhor lance com borda âmbar e lance novo sinalizado. Só o
+melhor lance usa botão âmbar; os demais usam botão escuro.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.22
+Feed e lance (fornecedor)
+arremate.com.br/painel-fornecedor/leilao/3c9d
+arremate
+Studio LX
+Início
+Leilões
+Meus lances
+Relatórios
+Perfil
+FILTROS
+Buffet
+Até 25 km
+Encerra em 24h
+12 leilões para você
+Buffet para 120 pessoas
+Paulínia  |  6 km  |  Sáb, 17 out
+3 lances1d 18h
+Coquetel corporativo, 80
+Campinas  |  22 km  |  Sex, 23 out
+2 lances18h 10m
+Churrasco de formatura, 150
+Sumaré  |  18 km  |  Dom, 25 out
+0 lances2d 11h
+Seu lance
+Valor
+R$ 11.800
+Prazo e o que está incluso
+Mensagem (300 caracteres)
+Enviar lance
+Você está em 2º lugar
+Valores dos outros não aparecem.
+O fornecedor vê leilões compatíveis com distância e tempo restante. No painel, envia o lance e vê só a própria posição.
+Versão mobile
+Largura de referência de 360 a 430 px. A ação principal fica numa barra fixa na parte de baixo, ao alcance do
+polegar. Filtros e confirmação de arremate abrem como bottom sheet.
+9:41
+arremate
+Você diz o que
+precisa. O mercado
+diz quanto custa.
+O que você precisa?
+Publicar necessidade
+Buffet para 120EXEMPLO
+47:12:08
+Cozinha da Dona AnaR$ 11.800
+Landing
+9:41
+<
+Nova necessidade
+Etapa 2 de 4
+Data do evento
+17/10/2026
+Cidade
+Paulínia
+Convidados
+120
+Orçamento máximo
+R$ 15.000
+Continuar
+Publicar: etapa 2 de 4
+9:41
+Buffet para 120
+Paulínia  |  Sáb, 17 out
+ENCERRA EM
+2d 04h 18m
+Avaliação 4+Verificado
+Cozinha da Dona Ana
+4,9 estrelas  |  132 contratos
+R$ 11.800
+Melhor lance
+Arrematar
+Sabor da Praça
+4,6 estrelas  |  48 contratos
+R$ 12.400
+Arrematar
+Filtros · 2Ordenar
+Comparar lances
+9:41
+<
+Seu lance
+Você está em 2º lugar
+Valor
+R$ 11.800
+Prazo
+Pronto em 3 dias
+O que está incluso
+Reduza até o encerramento.
+Enviar lance
+Enviar lance
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.23
+9:41
+Boa tarde, Mariana.
+2 leilões ativos
+Leilões ativos
+2
+Lances recebidos
+11
+Seus leilões
+Buffet para 120
+Recebendo lances
+R$ 11.800melhor lance
+Fotografia, 200 pessoas
+Encerra em 3h
+R$ 6.900melhor lance
+Publicar necessidade
+Painel do cliente
+9:41
+Buffet para 120
+Paulínia  |  Sáb, 17 out
+ENCERRA EM
+2d 04h 18m
+Avaliação 4+Verificado
+Cozinha da Dona Ana
+4,9 estrelas  |  132 contratos
+R$ 11.800
+Melhor lance
+Arrematar
+Sabor da Praça
+4,6 estrelas  |  48 contratos
+R$ 12.400
+Arrematar
+Filtros · 2Ordenar
+Confirmar arremate
+FornecedorCozinha da Dona Ana
+ValorR$ 11.800
+Prazo3 dias
+Você recebe o contrato e o contato
+do fornecedor. Cancele em até 24 h.
+Confirmar arremate
+Cancelar
+Confirmar arremate
+9:41
+Leilões para você
+BuffetAté 25 km
+Buffet para 120
+Paulínia  |  6 km
+3 lances1d 18h
+Coquetel, 80 pessoas
+Campinas  |  22 km
+2 lances18h 10m
+Churrasco, 150
+Sumaré  |  18 km
+0 lances2d 11h
+Feed do fornecedor
+9:41
+Seus leilões
+Nenhum leilão por aqui ainda.
+Publique sua primeira necessidade
+e receba lances em minutos.
+Publicar necessidade
+Estado vazio
+Dados fictícios. A tela de arremate é um bottom sheet sobre a lista de lances, com o botão âmbar como única ação principal.
+Regras específicas de mobile
+TEMAREGRA
+Barra de açãoFixa na base (Publicar necessidade, Continuar, Enviar lance), com padding para a área segura
+do iOS e sem ser coberta pelo teclado.
+Bottom sheet
+Raio de 20 px, alça no topo, fecha arrastando ou no botão Cancelar. Usado em filtros,
+ordenação e confirmação de arremate.
+CamposFonte de 16 px para evitar zoom no iOS. Valor em reais com teclado numérico e máscara; data
+com seletor nativo.
+Formulário de
+publicação
+4 etapas com barra de progresso, rascunho salvo a cada etapa e botão Salvar rascunho.
+Alvos de toqueMínimo de 44 px; ações principais na zona do polegar.
+Lista de lancesPilha com o melhor lance no topo; barra inferior com Filtros e Ordenar; novo lance entra no topo
+com aviso.
+Desempenho
+Skeleton nas listas, imagens com lazy loading, fontes com font-display swap, foco em conexões
+móveis lentas.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.24
+13 / SEÇÃO
+Microinterações e feedback
+Toda ação tem resposta em até 300 ms. A microinteração é parte da identidade, não
+decoração.
+COMPONENTECOMPORTAMENTO
+Botão primário
+Âmbar com texto tinta, 48 px. Hover escurece (#D97706) em 150 ms. Clique: scale 0,97 em 180
+ms. Carregando: spinner de 16 px e "Enviando...", sem mudar a largura. Desabilitado: 40% de
+opacidade.
+Botões secundário,
+ghost, destrutivo
+Secundário com borda; hover escurece a borda. Ghost sem borda, fundo muted no hover.
+Destrutivo vermelho sempre com modal de confirmação.
+Input
+Foco com borda de 2 px (âmbar escuro). Erro: borda vermelha, ícone e mensagem abaixo.
+Sucesso: borda verde e check. Desabilitado: fundo muted.
+Card de leilãoHover: borda escurece e sobe 2 px, sem sombra. Clique: scale 0,99. Foco com anel.
+Card de lance
+Novo lance: entra no topo com slide de 24 px e fade em 300 ms, borda âmbar pulsa por 600 ms.
+Primeiro lugar: borda âmbar de 2 px e selo "Melhor lance". Arrematado: borda verde, demais
+com 60% de opacidade.
+Toast
+Topo à direita no desktop, topo central no mobile. Máximo de 3. Entrada 300 ms, saída 200 ms.
+Sucesso 4 s, aviso 5 s, erro até dispensar. Um toast por ação, com Desfazer quando couber.
+Modal
+Backdrop 0 a 60% em 200 ms; conteúdo com scale 0,96 a 1 em 250 ms. Foco no primeiro
+elemento, focus trap, ESC fecha (exceto com dado não salvo).
+Dropdown, checkbox,
+radio
+Dropdown abre com slide de 4 px em 150 ms; setas, Enter e ESC. Checkbox âmbar com check
+desenhado em 200 ms. Radio com expansão em 200 ms.
+Timer
+Mono, formato "2d 4h 18m 32s". Cinza com mais de 24 h; âmbar escuro com menos de 24 h;
+vermelho com menos de 1 h, pulso suave e texto "Encerra em breve". Encerrado: neutro, sem
+animação.
+SkeletonBlocos muted com pulso (opacidade 1 a 0,5) de 1,5 s, com a forma do conteúdo final. Obrigatório
+em listas, detalhes, perfil e admin.
+Confete do arremate
+Uma vez, 40 partículas de 6 px em âmbar, branco e cinza, até 800 ms, sem som. Com
+prefers-reduced-motion, só o modal de sucesso.
+Tempo de resposta
+DURAÇÃOFEEDBACK
+Menos de 300 msNenhum
+300 ms a 1 sSkeleton ou indicador inline
+1 s a 5 sSkeleton e texto "Carregando..."
+Mais de 5 sSkeleton, texto, barra de progresso e botão Cancelar
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.25
+Mensagens por situação
+SITUAÇÃOFEEDBACK
+Leilão publicado
+Toast: "Leilão publicado. Avisamos você quando chegar o primeiro lance." com ação "Ver
+leilão".
+Lance enviadoToast: "Lance enviado. Você está em 2º lugar." e painel lateral atualizado.
+ArremateConfirmar no modal, depois confete e modal de sucesso: "Arremate confirmado. Contrato
+gerado." Ações: Ver contrato e Falar com fornecedor.
+Erro de formulárioAbaixo do campo, borda vermelha e ícone; o foco vai ao primeiro campo com erro.
+Sem conexão
+Toast de erro com Tentar novamente: "Sem conexão. Verifique sua internet e tente de
+novo."
+Erro de servidor"Algo deu errado do nosso lado. Já estamos verificando." com Tentar novamente.
+Sessão expiradaRedireciona ao login: "Sua sessão expirou. Entre novamente."
+Novo lance, cliente em
+outra tela
+Toast: "Novo lance recebido: R$ 11.800" e badge incrementado.
+Mudança de posição do
+fornecedor
+Fundo verde claro por 2 s se subiu, vermelho claro se desceu, sempre com texto.
+Leilão encerrado
+Timer vira "Encerrado". Toast: "Leilão encerrado. Você recebeu X lances." Sem arremate:
+sugestão de publicar de novo.
+Ação destrutivaModal explícito. Excluir rascunho: "Excluir rascunho? Você não pode desfazer isso."
+Cancelar leilão avisa fornecedores que já deram lance.
+Estados vazios
+TELAILUSTRAÇÃOTEXTOCTA
+Dashboard do cliente
+Cadeira vazia com
+placa
+Nenhum leilão por aqui ainda. Publique sua
+primeira necessidade e receba lances.
+Publicar
+necessidade
+Feed do fornecedorCaixa de correio
+vazia
+Sem leilões novos na sua região hoje. Avisamos
+quando aparecer.
+Ajustar filtros
+Antes do primeiro
+lance
+AmpulhetaPublicamos seu leilão para fornecedores da
+região. Acompanhe o tempo desde a publicação.
+Nenhum
+HistóricoPasta vazia
+Nada por aqui ainda. Seus leilões encerrados
+aparecem aqui.
+Nenhum
+Busca ou filtro sem
+resultado
+Lupa com zero
+Nenhum lance corresponde aos filtros. Tente
+ampliar a busca.
+Limpar filtros
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.26
+Durações e easings
+INTERAÇÃODURAÇÃOEASING
+Hover de botão150 msease-out
+Clique (scale)180 mscubic-bezier(0.16, 1, 0.3, 1)
+Foco120 msease-out
+Modal abre / fecha250 / 180 mscubic-bezier(0.16, 1, 0.3, 1) / ease-in
+Toast entra / sai300 / 200 mscubic-bezier(0.16, 1, 0.3, 1) / ease-in
+Novo lance (entrada)300 mscubic-bezier(0.16, 1, 0.3, 1)
+Pulso de borda do lance600 ms (exceção)ease-in-out
+Reordenação de lista300 msease-out, técnica FLIP
+ConfeteAté 800 ms (exceção)ease-out
+Skeleton1500 msease-in-out
+Matriz de estados
+Todo componente cobre todos os estados que se aplicam. Ignorar estados deixa o produto com cara de inacabado.
+COMPONENTEREPOUSOHOVERFOCOATIVOCARREGA
+NDO
+ERROVAZIODESABILI
+TADO
+Botãoxxxxxx
+Inputxxxxxx
+Card de leilãoxxxxxx
+Card de lancexxxxxx
+Dropdownxxxxxx
+Checkboxxxxxx
+Modalxxx
+Lista de leilõesxxxx
+Feed do fornecedorxxxx
+Timerx
+Regras invioláveis
+•Um toast por ação; erro de campo sempre abaixo do campo; confirmação obrigatória em ação destrutiva.
+•Loading nunca é spinner central em tela cheia.
+•Máximo de 3 elementos animados ao mesmo tempo e 30 por tela. Animar só transform e opacity.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.27
+•Nunca som sem consentimento. Vibração é opcional e nada depende dela (não funciona no iOS).
+•Fallback: sem backdrop-filter, versão estática; sem JavaScript, elementos críticos continuam funcionando;
+sem rede, o formulário vira rascunho.
+•Acessibilidade: tudo tem equivalente em teclado, foco nunca se perde, toasts em aria-live polite, erros em
+aria-live assertive, focus trap em modal.
+14 / SEÇÃO
+Filtros e ordenação
+Filtros primeiro, ordenação depois, contador sempre visível. No desktop a barra é sticky; no
+mobile, um botão abre bottom sheet.
+Comparação de lances (cliente)
+FILTROTIPOOPÇÕES
+Faixa de preçoSlider duploDe R$ 0 até o orçamento máximo
+Avaliação mínimaChips3+, 4+, 4,5+, 5
+Prazo máximoChips24 h, 3 dias, 7 dias, 15 dias
+Verificado, portfólio, garantiaTogglesLigado ou desligado
+Ordenação: Recomendados (padrão), menor preço, maior avaliação, menor prazo, mais contratos, mais
+recentes.
+Feed do fornecedor
+FILTROTIPOOPÇÕES
+CategoriaChips múltiplosBuffet, fotografia, DJ, decoração, frete, reforma
+DistânciaSlider5, 10, 25, 50, 100 km
+Data de execuçãoIntervaloSeletor de datas
+Faixa de valorSlider duploR$ 500 a R$ 100.000
+Número de lancesChipsMenos de 3, menos de 5, menos de 10
+UrgênciaToggleEncerra em 24 h
+Ordenação: mais recentes (padrão), encerrando em breve, maior valor, menos concorridos, mais próximos. No
+histórico: mais recentes, maior valor e melhor avaliação.
+Comportamento
+•Chips e toggles aplicam na hora; sliders após 300 ms de pausa.
+•Filtro ativo: chip âmbar com texto tinta. Inativo: borda e texto ardósia. Contador "Filtros · 3" e botão "Limpar
+tudo" sempre que houver filtro ativo.
+•Reordenar não recarrega a lista: acontece em memória, com animação de 300 ms.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.28
+•Filtros e ordenação são salvos por usuário e por tela. Filtros nomeados (máximo de 5) ficam para a V2.
+•Sem resultado após filtro: lupa com zero, "Nenhum lance corresponde aos filtros. Tente ampliar a busca." e
+botão Limpar filtros.
+15 / SEÇÃO
+Landing page
+Objetivo: levar o cliente a publicar a primeira necessidade e o fornecedor a se cadastrar.
+Direção de arte: sobriedade com calor, muito espaço em branco, o âmbar em no máximo 3
+lugares da página.
+arremate.com.br
+arremate
+Sou fornecedor
+Publicar necessidade
+Você diz o que precisa.
+O mercado diz
+quanto custa.
+O que você precisa? Buffet, fotografia, DJ...
+Publicar necessidade
+Leva 5 minutos. Sem cartão.
+Buffet para 120 pessoas
+Paulínia  |  Sáb, 17 out
+EXEMPLO
+47:12:08
+3 lances
+Melhor lance
+Cozinha da Dona Ana
+R$ 11.800
+Sabor da Praça
+R$ 12.400
+Buffet Jardim
+R$ 13.100
+Fornecedores verificadosLances em tempo realGrátis para quem contrata
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.29
+Landing do cliente (arremate.com.br)
+SEÇÃOCONTEÚDO E TEXTO
+1. Navegação
+Logo, Como funciona, Categorias, Preços, "Sou fornecedor" e botão Publicar necessidade. Fixa; ao
+rolar ganha fundo claro com blur e borda fina.
+2. HeroTítulo: Você diz o que precisa. O mercado diz quanto custa. Subtítulo: Publique sua
+necessidade uma vez. Receba lances de fornecedores da sua região. Escolha o melhor. Campo de
+busca por categoria, botão âmbar Publicar necessidade e microtexto: Leva 5 minutos. Você só cria
+a conta na hora de publicar. À direita, mock animado com 3 lances chegando, marcado como
+exemplo.
+3. Confiança
+Fornecedores verificados, lances em tempo real, grátis para quem contrata. Contagem de serviços
+e logos de parceiros só quando existirem.
+4. O problema
+Três cards: Pedir orçamento é lento. Comparar é pior. Fechar é sorte. Cada um com uma frase
+curta e ilustração.
+5. Como funciona
+Descreva o que você precisa. Receba lances em tempo real. Compare, escolha e arremate. Cada
+passo com mock de tela.
+6. CategoriasBuffet, Fotografia, DJ, Decoração, Frete, Reforma. Cada card abre o formulário já preenchido com a
+categoria.
+7. Números de
+valor
+Três números em mono: tempo até o primeiro lance, economia média sobre o primeiro orçamento e
+fornecedores verificados. Ocultos até haver dados reais.
+8. DepoimentosOcultos até existirem clientes reais do piloto, com nome, cidade e foto autorizada.
+9. Perguntas
+Cobra algo do cliente? Não. Como sei que o fornecedor é confiável? Verificação de documento e
+selfie, avaliações e histórico. Posso cancelar? Em até 24 h após arrematar. Quando chegam os
+lances? Depende da região e da categoria; mostramos o tempo desde a publicação. Intermedeia
+pagamento? Ainda não.
+10. CTA finalFundo tinta. Título: Sua próxima contratação começa aqui. Botão âmbar Publicar necessidade.
+11. RodapéProduto, Para fornecedores, Institucional, Contato; CNPJ, endereço e "Feito em Paulínia".
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.30
+Landing do fornecedor (/fornecedores)
+SEÇÃOCONTEÚDO E TEXTO
+Hero
+Título: Receba clientes que já querem contratar. Sem gastar com anúncio. Subtítulo:
+Cadastre-se e receba aviso de clientes com data e orçamento definidos. Botão: Cadastrar como
+fornecedor.
+ProblemaVocê responde 10 orçamentos e fecha 2. Não sabe por que perdeu os outros 8.
+GanhosDemanda qualificada, ciclo de venda mais curto, relatório de por que perdeu, começar de graça.
+Como funcionaVocê define segmentos e região. Recebe avisos de leilões compatíveis. Dá lance e, se ganhar,
+fecha. Recebe avaliação e sobe no ranking.
+PlanosTabela de 3 colunas: Grátis (3 lances por mês), Pro, Prime. Preços a validar.
+Perguntas
+Preciso ter CNPJ? Não, aceitamos autônomos com CPF verificado. Quanto custa começar? Nada.
+Posso recusar depois de arrematado? Pode, com penalidade de reputação.
+16 / SEÇÃO
+Microcopy e voz
+Texto é o que mais denuncia produto feito no automático. Falar como pessoa, com frases
+curtas, voz ativa e sem jargão.
+EVITARUSAR
+Por favor, insira suas credenciais para autenticação.Entre com seu e-mail e senha.
+Erro 401: credenciais inválidas.
+A senha está incorreta. Tente novamente ou recupere o
+acesso.
+Ops! Algo deu errado!
+Não conseguimos enviar seu lance. Tente de novo em
+alguns segundos.
+Digite aqui...Buffet para 120 pessoas
+Campo obrigatório.Precisamos desse dado para continuar.
+Nenhum registro encontrado.
+Nenhum leilão por aqui ainda. Publique sua primeira
+necessidade e receba lances.
+Operação realizada com sucesso!Lance enviado. Você está em 2º lugar.
+Clique aqui para prosseguir com o cadastroCriar minha conta
+O leilão foi arrematado por você.Você arrematou o leilão.
+Atenção: esta ação é irreversível.
+Depois de arrematar, você não pode desfazer. Quer
+continuar?
+Princípios
+•Fale como você fala. Máximo de 12 palavras por frase. Voz ativa.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.31
+•Sem exclamação em momento sério e sem emoji.
+•Erro diz o que houve e o que fazer; nunca só o código.
+•Cada tela com um único CTA principal, com verbo de ação: Publicar necessidade, Dar lance, Arrematar.
+Vocabulário
+PALAVRAS PROIBIDASPALAVRAS BEM-VINDAS
+simplesmente, basta, fácil, solução (genérica),
+plataforma (fora do contexto técnico), alavanque,
+empodere, transforme, revolucione, jornada,
+experiência única, solução inovadora
+arremate, lance, leilão, encerra em, compare, escolha,
+publique, avisamos você, sem cartão
+17 / SEÇÃO
+Arquitetura técnica
+Stack para entregar rápido, com tempo real nativo e regras no banco. Supabase foi escolhido
+sobre Firebase porque ranking, posição e relatórios são consultas relacionais.
+CAMADAESCOLHAMOTIVO
+Front-end
+Next.js 15 (App Router), TypeScript, Tailwind v4,
+shadcn/ui
+Velocidade, SEO na landing, componentes
+acessíveis
+Banco e authSupabase: Postgres, Auth, Storage
+SQL sólido, RLS, arquivos de portfólio e
+documentos
+Tempo realSupabase Realtime, canal por leilãoLances aparecem em segundos sem polling
+SegurançaRow Level Security e funções PostgresRegras sensíveis fora do front
+Jobspg_cron ou Vercel CronFechar leilões, estender prazo, ampliar raio,
+sinalizar anomalias
+MensagensWeb push, Resend (e-mail); WhatsApp na V2Aviso rápido ao fornecedor é crítico
+ContratoPDF gerado no servidorTermo simples entre as partes
+Pagamento (V2)Parceiro regulado com split, a confirmarRetenção e repasse
+ObservabilidadePostHog e SentryFunil, eventos e erros
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.32
+Dados
+TABELACAMPOS PRINCIPAIS
+profiles, providers,
+provider_verifications
+papel, documentos, selfie, status, nota média, taxa de resposta, raio, localização
+categories, provider_categoriescategorias ativas e vínculo com fornecedores
+requests
+cliente, categoria, descrição, data, cidade, quantidade, teto em centavos, teto
+visível, status, abre_em, fecha_em, extensões
+bids, bid_revisions
+valor em centavos, prazo, itens inclusos, mensagem, validade, status; histórico de
+reduções
+contracts, reviews, disputeslance arrematado, valor final, avaliações bilaterais, disputas
+plans, subscriptionsplanos do fornecedor e vigência
+loss_reports, audit_logrelatório de perda e trilha de auditoria de todo evento relevante
+payments (V2)sinal, saldo, repasse e reembolso; criado, mas desligado no MVP
+Tempo real e segurança
+•O cliente dono escuta cada lance. O fornecedor recebe apenas posição e contagem, por função RPC, nunca a
+linha dos concorrentes.
+•Aceite de lance, extensão de prazo, cálculo de posição e fechamento ficam em funções do banco, com
+transação.
+•Valores em centavos. Rate limit nas rotas de lance. Zod nas bordas. Nenhuma chave secreta no cliente.
+•Documentos de verificação em bucket privado, acesso registrado (LGPD).
+Notificações
+EVENTOCANALPARA
+Novo leilão compatívelPush e e-mailFornecedor
+Novo lancePush (toast se estiver no app)Cliente
+Mudança de posiçãoPainel em tempo realFornecedor
+Leilão encerradoPush e e-mailAmbos
+ArrematePush e e-mailAmbos
+Lembrete de avaliação, 24 h após
+execução
+E-mailAmbos
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.33
+18 / SEÇÃO
+Roadmap, métricas e riscos
+Antes de construir, rode um piloto manual. Se o comportamento aparece no WhatsApp, vale
+automatizar; se não aparece, o produto não resolveria.
+FASEDURAÇÃO
+ESTIMADA
+ENTREGACRITÉRIO PARA AVANÇAR
+0. Descoberta2 semanas
+Entrevistar cerca de 15 clientes (casais, síndicos,
+empresas) e 20 fornecedores. Validar dor,
+vocabulário e disposição a pagar.
+Padrões claros de dor e de
+preço.
+1. Piloto
+concierge
+3 a 4 semanasLanding com lista de espera, formulário de pedido,
+grupo de fornecedores no WhatsApp, lances
+coletados e organizados à mão.
+20 pedidos reais, 3 lances
+ou mais em 60% deles, 5
+contratações.
+2. MVP
+8 a 12 semanas
+(parcial, solo)
+Fluxo completo do escopo MVP em Paulínia, sem
+pagamento intermediado.
+Taxa de fechamento de
+25% ou mais.
+3. Abertura
+controlada
+4 a 8 semanas
+Cadastro público em Paulínia; meta de 100
+fornecedores e 50 leilões concluídos; início da
+assinatura.
+Fornecedores pagantes.
+4. ExpansãoContínuoSumaré, Hortolândia, Americana; pagamento com
+sinal; frete e reforma.
+Playbook de cidade
+replicável.
+Prazos e metas vêm dos documentos originais e da versão anterior; são estimativas, não compromissos.
+Estratégia de entrada
+•Oferta primeiro. 30 a 50 fornecedores verificados antes de abrir para clientes: grupos de WhatsApp,
+Instagram local, associações comerciais e indicação.
+•Uma região, poucas categorias. Buffet, fotografia e DJ em Paulínia.
+•Demanda local. Grupos de bairro, salões de festa, cerimonialistas, Instagram e Google local. Mídia paga só
+depois de provar conversão.
+•Sazonalidade. Confraternizações e formaturas de outubro a dezembro servem de pico para o piloto.
+•Garantia de mercado. Se um pedido não receber 3 lances, a equipe convida fornecedores manualmente.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.34
+Indicadores
+INDICADORO QUE MEDEMETA INICIAL (HIPÓTESE)
+Taxa de fechamento
+Pedidos arrematados / pedidos publicados
+(principal)
+25% a 30% ou mais
+Tempo até o primeiro lanceSaúde da ofertaMenos de 15 a 30 minutos
+Lances por leilãoLiquidez3 ou mais
+Economia sobre o teto ou o
+primeiro orçamento
+Valor entregue ao clienteA medir; 10% ou mais
+VazamentoContratos combinados fora do appA medir
+NPS de cliente e fornecedorSatisfação50 ou mais
+Fornecedores pagantes e receita
+recorrente
+SustentabilidadeA definir com o piloto
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.35
+Riscos e mitigação
+RISCOPOR QUE IMPORTAMITIGAÇÃO
+Falta de liquidez
+Sem lances rápidos o cliente
+abandona; sem pedidos o
+fornecedor desiste.
+Oferta antes da demanda, uma região, convite manual,
+ampliação de raio (RN17), gratuidade no início.
+Corrida para o fundoPreço baixo demais derruba
+qualidade.
+Itens inclusos obrigatórios, score com reputação e prazo,
+lance anômalo em revisão, relatório que mostra o
+mercado.
+Fornecedor premium
+evita leilão
+Quem tem agenda cheia não quer
+disputar preço.
+Convite direto por cliente na V2 e destaque por reputação.
+Vazamento da
+plataforma
+Contato liberado sem pagamento
+reduz o controle.
+No MVP, receita é assinatura, não comissão. Na V2, sinal
+protegido e benefícios que só existem dentro.
+Concorrente grande
+copia
+O modelo não é protegido.Foco regional, relação com fornecedores locais, base de
+reputação e dados de preço.
+Lances anômalos e
+fraude
+Corroem a confiança.Verificação, selfie, uma conta por CPF, auditoria
+automática e moderação.
+Escopo difícil de
+comparar
+Casamento e reforma variam
+demais.
+Começar por serviços padronizáveis; formulário guiado
+por categoria.
+Cancelamento e
+no-show
+Evento não admite falha.
+Penalidade de reputação, reabertura prioritária, avaliação
+obrigatória.
+Jurídico e
+pagamentos
+Retenção de dinheiro de terceiros é
+regulada; contrato de intermediação
+precisa de revisão.
+Parceiro regulado na V2; termos revisados por advogado.
+Mercado
+superestimado
+O número de R$ 100 bi não é o
+mercado endereçável.
+Calcular bottom-up por cidade e categoria.
+Nome e marcaArremate pode já estar registrado.Busca de INPI e domínio antes de investir na identidade.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.36
+19 / SEÇÃO
+Checklist de qualidade
+Revisar antes de colocar qualquer tela no ar.
+REVISÃO
+Visual
+Espaçamento em múltiplos de 4. Hierarquia tipográfica
+com saltos reais. Âmbar só em ação e destaque. Borda
+ou sombra, nunca as duas. Fundo de card diferente do
+de página. Zero gradiente decorativo. Zero emoji.
+REVISÃO
+Interação
+Um primário por região de decisão. Transições de 150
+a 300 ms. Foco visível. Alvos de 44 px. Estados vazios
+desenhados. Skeleton em vez de spinner.
+REVISÃO
+Conteúdo
+Microcopy humano, sem jargão. Frases de até 12
+palavras. Voz ativa. Erros embaixo do campo. Nenhum
+"clique aqui". Nenhum número ou depoimento
+inventado.
+REVISÃO
+Acessibilidade
+Contraste AA (4,5 para 1 em texto). Teclado
+funcionando. Alt significativo. Labels reais. Estado
+nunca só por cor. Reduced motion respeitado.
+REVISÃO
+Desempenho
+Fontes com font-display swap. Imagens com lazy
+loading. Skeleton antes de conteúdo pesado. Sem
+layout shift. Lighthouse acima de 90.
+IDENTIDADE
+Identidade
+Nada que pareça template. Sem blob colorido, sem
+ícone 3D. Mono em todo valor monetário. Âmbar com
+parcimônia.
+Regra final
+Na dúvida entre adicionar mais um elemento e deixar mais limpo, deixe mais limpo. Produto com cara de template
+adiciona; produto com cara de profissional subtrai.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.37
+20 / SEÇÃO
+Teste de usabilidade
+O design só está validado depois de visto em uso. Este roteiro serve para o protótipo clicável e
+para o primeiro MVP.
+ITEMDEFINIÇÃO
+Participantes
+5 clientes (eventos pessoais e síndicos) e 5 fornecedores (buffet, fotografia, DJ), da região de
+lançamento. Cinco pessoas por grupo já revelam a maioria dos problemas graves.
+Formato
+Sessões de 30 a 40 minutos, moderadas, com o participante pensando em voz alta. Gravação só
+com consentimento, conforme a LGPD. Metade no celular, metade no desktop.
+Antes de começar
+Teste dos 5 segundos na landing: mostrar a tela por 5 segundos e perguntar o que o produto faz e
+para quem é.
+Tarefas
+PERFILTAREFAS
+Cliente
+T1 publicar uma necessidade (meta: menos de 5 minutos). T2 achar o melhor lance entre 6 usando
+filtros e ordenação. T3 explicar por que um lance aparece como Melhor lance. T4 arrematar e
+localizar o contrato. T5 cancelar dentro de 24 h.
+FornecedorF1 cadastrar-se e entender a verificação. F2 achar um leilão compatível no feed. F3 enviar um lance.
+F4 reduzir o lance e interpretar a posição. F5 abrir o relatório de um leilão perdido.
+Medidas e critérios
+MEDIDACOMO COLETARCRITÉRIO PARA SEGUIR
+Conclusão da tarefaObservação direta80% ou mais em cada tarefa
+Tempo e erros por tarefaCronômetro e anotação de cliques erradosPublicar em menos de 5 minutos
+Facilidade percebidaPergunta de 1 a 7 após cada tarefaMédia de 5,5 ou mais
+Usabilidade geralQuestionário SUS ao finalAcima de 68 (média de mercado); meta de 80
+Clareza da propostaTeste dos 5 segundos
+4 de 5 explicam que recebem propostas de
+fornecedores
+ConfiançaPerguntas abertas
+Entendem quem vê o orçamento e como o
+pagamento funciona
+Cara de template
+Perguntar: que produtos isso lembra? O
+que parece genérico?
+Nenhum participante cita template ou produto
+genérico como referência principal
+Perguntas depois das tarefas
+•Qual foi o momento mais confuso? E o mais claro?
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.38
+•Você sabe quanto vai pagar e quem pode ver o seu orçamento?
+•Você confiaria neste fornecedor para o seu evento? O que faltou para confiar?
+•O que você esperava que acontecesse depois de arrematar?
+•Se pudesse mudar uma coisa, qual seria?
+Problemas que impedem uma tarefa são corrigidos antes do lançamento. O restante entra no backlog por frequência e gravidade.
+21 / SEÇÃO
+Prompt para IA
+Cole o texto abaixo em uma ferramenta de IA para programação (Claude Code, Cursor,
+Lovable, v0 ou similar). Ele já traz as decisões desta versão unificada. Cópias em texto
+simples do prompt e dos tokens acompanham este PDF.
+PROMPT PARA IA: CONSTRUIR O MVP DO ARREMATE
+PAPEL
+Você é um engenheiro full-stack sênior com bom olho para design de produto. Vai construir do zero o
+MVP do "Arremate", plataforma de leilão reverso de serviços locais. Trabalhe por etapas: rode e
+teste cada uma antes de seguir e me avise quando precisar de uma decisão minha. Não invente
+funcionalidades fora do escopo abaixo e não invente números, depoimentos ou métricas na interface.
+O PRODUTO
+O cliente publica o que precisa e o orçamento máximo, por exemplo: "buffet para 120 pessoas, em
+Paulínia, daqui a 3 meses, até R$ 15.000". Fornecedores verificados da região, que atendem a
+categoria e o raio, são avisados e enviam lances com valor, prazo, o que está incluso e uma
+mensagem. O cliente acompanha os lances em tempo real, filtra, ordena, compara e arremata o
+escolhido. Ao arrematar, gera-se um contrato simples em PDF e o contato direto é liberado. Depois da
+execução, os dois se avaliam. Quem perdeu recebe um relatório do leilão.
+Frase central da marca: "Você diz o que precisa. O mercado diz quanto custa. Você decide."
+Idioma da interface: português do Brasil. Moeda: BRL. Fuso: America/Sao_Paulo.
+Fora do escopo do MVP: pagamento intermediado (sinal e escrow ficam para a V2), chat em tempo real,
+aplicativo nativo, categorias além de eventos, reformas e frete, múltiplas cidades ao mesmo tempo.
+Deixe interfaces prontas (PaymentProvider, ChatProvider) com implementação vazia ou mock.
+STACK OBRIGATÓRIA
+- Next.js 15 (App Router) com TypeScript estrito
+- Tailwind CSS v4 + shadcn/ui + ícones Lucide (somente Lucide, traço 1,5 px)
+- Supabase: Postgres, Auth (e-mail e Google), Realtime, Storage e Row Level Security
+- Deploy na Vercel
+- Zod, React Hook Form, TanStack Query onde fizer sentido
+- Notificações: push web e e-mail com Resend; interface de WhatsApp só como contrato, com
+  implementação mock
+- Geração do contrato simples em PDF no servidor
+- Fontes: Inter (títulos e corpo) e JetBrains Mono (valores em reais, contadores e números de
+  métricas)
+IDENTIDADE VISUAL E DESIGN SYSTEM
+Estilo: sóbrio, preciso e confiável, como um jornal financeiro moderno. Inspirações de sensação:
+Linear, Stripe, Vercel, Superhuman, Raycast e Notion. Zero emojis na interface. Zero gradiente
+decorativo, zero blobs, zero ícone 3D, zero roxo.
+Tokens de cor (modo claro):
+- ink #0A0A0B (texto principal e botão escuro), graphite #26262B, slate #57534E (texto secundário),
+  page #FAFAF9 (fundo da página), surface #FFFFFF (cards), muted #F5F5F4, line #E7E5E4
+- accent #F59E0B (âmbar): só em ação principal, melhor lance, destaque de ranking e estado ativo de
+  filtro. Texto sobre âmbar sempre ink.
+- amberText #B45309: usar para texto, ícone e link sobre fundo claro (o âmbar puro não tem contraste
+  suficiente sobre branco)
+- success #10B981 (fundo e ícone) e successText #047857 (texto); error #EF4444 (fundo e ícone) e
+  errorText #DC2626 (texto); warning #F97316; info #3B82F6
+Modo escuro: page #0A0A0B, surface #141416, line #26262B, text #FAFAF9, secundário #A1A1AA.
+Implemente com variáveis CSS desde o início.
+Tipografia: H1 48 a 64, H2 32 a 40, H3 24, corpo 16, micro 14. Entrelinha curta nos títulos, largura
+máxima de texto corrido de 65ch. Uppercase só em micro-rótulos de até 3 palavras.
+Forma: espaçamento em múltiplos de 4 (4, 8, 12, 16, 24, 32, 48, 64, 96). Raio 10 (botões e inputs) e
+16 (cards). Cards usam borda de 1 px; sombra só em modal, dropdown e toast. Fundo de página
+diferente do fundo de card.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.39
+Botões: altura 48 px, alvo de toque mínimo de 44 px no mobile. Primário âmbar com texto ink;
+secundário com borda; ghost sem borda; escuro (ink) para "Arrematar" nos cards da lista; destrutivo
+vermelho sempre com modal de confirmação. Regra: um botão primário âmbar por região de decisão (no
+card do melhor lance, no hero, no modal de confirmação).
+Foco: anel de 2 px com offset de 2 px, ink no modo claro e âmbar no modo escuro.
+Avatares: círculo limpo. Ícones: Lucide, tamanhos 16, 20, 24 e 32.
+Acessibilidade: contraste AA, navegação por teclado, labels reais, estado nunca só por cor, aria-
+live nos toasts, focus trap nos modais, prefers-reduced-motion respeitado.
+Mobile first: 80% do uso esperado é no celular.
+MICROINTERAÇÕES E FEEDBACK
+Toda ação tem resposta visível em até 300 ms; acima disso, skeleton com a mesma forma do conteúdo
+(nunca spinner central em tela cheia).
+Durações: hover 150 ms ease-out; active (scale 0,97) 180 ms; modal abre em 250 ms e fecha em 180 ms;
+toast entra em 300 ms e sai em 200 ms; entrada de novo lance 300 ms com easing cubic-bezier(0.16, 1,
+0.3, 1); reordenação de lista 300 ms (técnica FLIP). Pulso de borda âmbar do lance novo: 600 ms.
+Confete no arremate: uma vez, até 800 ms, 40 partículas, sem som; se prefers-reduced-motion estiver
+ativo, mostrar só o modal de sucesso. Animar só transform e opacity. No máximo 3 elementos animados
+ao mesmo tempo.
+Timer do leilão em JetBrains Mono, formato "2d 4h 18m 32s": cinza com mais de 24 h, âmbar escuro com
+menos de 24 h, vermelho com menos de 1 h (com pulso suave de opacidade e o texto "Encerra em breve",
+para não depender só de cor), "Encerrado" quando acaba.
+Lance novo: card entra no topo com slide de 24 px e fade, borda âmbar pulsa; se o cliente estiver em
+outra tela, toast "Novo lance recebido: R$ 11.800". Primeiro lugar: borda de 2 px âmbar e selo
+"Melhor lance". Arrematado: borda verde e os demais cards com 60% de opacidade.
+Fornecedor: ao mudar de posição, o painel atualiza com fundo verde claro (subiu) ou vermelho claro
+(desceu) por 2 s e com texto, por exemplo "Você subiu para 1º lugar".
+Erros de formulário aparecem abaixo do campo, com borda vermelha e ícone de alerta, e o foco vai
+para o primeiro campo com erro. Erros de rede e de servidor usam toast com botão "Tentar novamente".
+Mensagem de login específica: "A senha está incorreta. Tente novamente ou recupere o acesso."
+Vibração tátil (navigator.vibrate) só como melhoria opcional; não funciona no iOS Safari e nada pode
+depender dela.
+Estados obrigatórios por componente: repouso, hover, foco, ativo, carregando, erro, vazio e
+desabilitado. Todo estado vazio tem ilustração simples (SVG de traço 1,5 px, preto com um toque de
+âmbar), texto e CTA.
+Toasts: sucesso 4 s, erro até dispensar, aviso 5 s, info 4 s; no máximo 3 visíveis; um toast por
+ação.
+FILTROS E ORDENAÇÃO
+Tela de comparação de lances (cliente), filtros: faixa de preço (slider duplo até o orçamento
+máximo), avaliação mínima (3+, 4+, 4,5+, 5), prazo máximo (24 h, 3 dias, 7 dias, 15 dias),
+verificado, com portfólio, com garantia. Chips e toggles aplicam na hora; sliders aplicam após 300
+ms de debounce. Chip ativo com fundo âmbar e texto ink. Contador "Filtros · 3", botão "Limpar tudo"
+e contagem "X lances encontrados". Desktop: barra sticky no topo da lista. Mobile: bottom sheet.
+Ordenação do cliente: Recomendados (padrão), Menor preço, Maior avaliação, Menor prazo, Mais
+contratos, Mais recentes. Score de Recomendados, com pesos configuráveis: preço 45%, reputação 25%,
+prazo 15%, confiabilidade (resposta e cumprimento) 10%, completude do lance 5%.
+Feed do fornecedor, filtros: categoria (multi), distância (5, 10, 25, 50, 100 km), data de execução,
+faixa de valor, número de lances, urgência (encerra em 24 h). Ordenação: mais recentes (padrão),
+encerrando em breve, maior valor, menos concorridos, mais próximos.
+Filtros primeiro, ordenação depois. A ordenação reordena em memória, sem recarregar. Persistir
+filtros e ordenação por usuário e por tela. Estado vazio após filtro: "Nenhum lance corresponde aos
+filtros. Tente ampliar a busca." com botão "Limpar filtros".
+MOBILE
+Projete e teste primeiro em 360 a 430 px de largura. Barra de ação fixa na parte inferior (Publicar
+necessidade, Continuar, Enviar lance), com padding para a área segura do iOS (env(safe-area-inset-
+bottom)). Filtros e confirmação de arremate abrem como bottom sheet com raio de 20 px e alça no
+topo. Alvos de toque de pelo menos 44 px e ações principais ao alcance do polegar. Campos com fonte
+de 16 px para evitar zoom no iOS; valor em reais com inputmode="decimal" e máscara de R$; data com
+seletor nativo. O teclado não pode cobrir o botão de ação. Formulário de publicação em 4 etapas com
+barra de progresso, rascunho salvo a cada etapa e botão "Salvar rascunho". Lista de lances em pilha,
+com o melhor lance no topo e barra inferior "Filtros · N" e "Ordenar".
+TOKENS CSS (use como base do app/globals.css, sem alterar os valores)
+/* Arremate - design tokens (Tailwind v4). Base para app/globals.css */
+@import "tailwindcss";
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-ink: #0A0A0B;
+  --color-graphite: #26262B;
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.40
+  --color-slate: #57534E;
+  --color-muted: #F5F5F4;
+  --color-line: #E7E5E4;
+  --color-accent: #F59E0B;
+  --color-accent-hover: #D97706;
+  --color-accent-soft: #FEF3C7;
+  --color-success: #10B981;
+  --color-success-soft: #D1FAE5;
+  --color-error: #EF4444;
+  --color-warning: #F97316;
+  --color-info: #3B82F6;
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius-sheet: 20px;
+  --ease-out-quart: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-hover: 150ms;
+  --duration-press: 180ms;
+  --duration-modal: 250ms;
+  --duration-enter: 300ms;
+}
+/* Tokens semanticos: mudam entre claro e escuro */
+:root {
+  --bg: #FAFAF9;
+  --card: #FFFFFF;
+  --fg: #0A0A0B;
+  --fg-2: #57534E;
+  --border: #E7E5E4;
+  --ring: #0A0A0B;
+  --accent-text: #B45309;
+  --success-text: #047857;
+  --error-text: #DC2626;
+}
+.dark {
+  --bg: #0A0A0B;
+  --card: #141416;
+  --fg: #FAFAF9;
+  --fg-2: #A1A1AA;
+  --border: #26262B;
+  --ring: #F59E0B;
+  --accent-text: #F59E0B;
+  --success-text: #34D399;
+  --error-text: #F87171;
+}
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-border: var(--border);
+  --color-accent-text: var(--accent-text);
+  --color-success-text: var(--success-text);
+  --color-error-text: var(--error-text);
+}
+/* Foco visivel: tinta no claro, ambar no escuro */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+/* Valores em reais, contadores e metricas */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+/* Mobile: 16px nos campos evita zoom automatico no iOS */
+input, select, textarea { font-size: 16px; }
+@media (prefers-reduced-motion: reduce) {
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.41
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+ROTAS E TELAS
+São 35 telas ao todo; o primeiro release cobre 27 (marcadas com *).
+Público: /* (landing cliente), /fornecedores*, /como-funciona, /precos, /termos*, /privacidade*,
+404*
+Autenticação: /entrar*, /cadastro*, /cadastro-fornecedor* (3 etapas: dados, verificação por CPF/CNPJ
+e selfie, segmentos e região), /recuperar-senha*, /verificar-email
+Cliente: /painel-cliente*, /painel-cliente/novo* (formulário guiado com rascunho salvo), /painel-
+cliente/novo/sucesso*, /painel-cliente/leilao/[id]* (comparar lances), /painel-
+cliente/fornecedor/[id]*, /painel-cliente/contrato/[id]*, /painel-cliente/historico, /painel-
+cliente/avaliar/[id]*
+Fornecedor: /painel-fornecedor*, /painel-fornecedor/leiloes*, /painel-fornecedor/leilao/[id]*
+(enviar e editar lance), /painel-fornecedor/lances*, /painel-fornecedor/relatorio/[id] (por que você
+perdeu), /painel-fornecedor/config*, /painel-fornecedor/plano, /painel-fornecedor/perfil*
+Admin: /admin*, /admin/leiloes*, /admin/fornecedores*, /admin/auditoria, /admin/metricas
+LANDING PAGE (/)
+Cliente (/): navegação fixa com blur ao rolar; hero com título "Você diz o que precisa. O mercado
+diz quanto custa.", subtítulo "Publique sua necessidade uma vez. Receba lances de fornecedores da
+sua região. Escolha o melhor.", campo "O que você precisa?" e botão âmbar "Publicar necessidade",
+microtexto "Você só cria a conta na hora de publicar. Sem cartão."; à direita um mock de leilão com
+3 lances chegando em sequência (marcado como exemplo); faixa de confiança; "O problema" em 3 cards
+(pedir orçamento é lento, comparar é pior, fechar é sorte); como funciona em 3 passos com mocks de
+tela; categorias (Buffet, Fotografia, DJ, Decoração, Frete, Reforma); números de valor; FAQ; CTA
+final em fundo ink; rodapé.
+IMPORTANTE: os números da seção de valor e da prova social (tempo até o primeiro lance, economia
+média, quantidade de serviços arrematados) ficam como campos configuráveis, ocultos até existirem
+dados reais do piloto. Depoimentos também ficam ocultos até haver pessoas reais. Não use banco de
+imagens.
+Fornecedor (/fornecedores): hero "Receba clientes que já querem contratar. Sem gastar com anúncio.";
+problema ("Você responde 10 orçamentos e fecha 2. Não sabe por que perdeu os outros 8."); como
+funciona em 4 passos; planos em 3 colunas; FAQ do fornecedor; CTA "Cadastrar como fornecedor".
+MODELO DE DADOS (Postgres)
+Crie migrations SQL versionadas com:
+- profiles(id uuid pk = auth.users.id, role enum cliente|fornecedor|admin, nome, telefone, cidade,
+  created_at)
+- categories(id, slug, nome, ativa)
+- providers(id, profile_id, nome_fantasia, documento, tipo enum mei|pj|pf, descricao, status enum
+  pendente|verificado|suspenso, nota_media, total_avaliacoes, taxa_resposta, raio_km, cidade_base,
+  lat, lng)
+- provider_categories(provider_id, category_id)
+- requests(id, customer_id, category_id, titulo, descricao, data_evento, cidade, lat, lng,
+  quantidade, teto_centavos, teto_visivel boolean default true, status enum
+  rascunho|aberto|encerrado|contratado|em_execucao|concluido|expirado|cancelado|em_disputa, abre_em,
+  fecha_em, extensoes int default 0)
+- bids(id, request_id, provider_id, valor_centavos, inclui text[], observacoes, validade_ate, status
+  enum ativo|retirado|aceito|recusado|expirado, created_at)
+- bid_revisions(id, bid_id, valor_anterior_centavos, valor_novo_centavos, created_at)
+- contracts(id, request_id, bid_id, customer_id, provider_id, valor_centavos, sinal_centavos,
+  comissao_pct, status, aceito_em, concluido_em)
+- payments(id, contract_id, tipo enum sinal|saldo|repasse|reembolso, valor_centavos, status,
+  provider_ref, created_at)
+- messages(id, contract_id, sender_id, corpo, created_at)
+- reviews(id, contract_id, autor_id, alvo_id, nota int 1..5, comentario, created_at)
+- disputes(id, contract_id, aberta_por, motivo, status, resolucao)
+- notifications(id, profile_id, tipo, payload jsonb, lida_em, created_at)
+- plans(id, nome, preco_centavos, lances_por_mes, destaque boolean) e subscriptions(id, provider_id,
+  plan_id, status, inicio, fim)
+- loss_reports(id, request_id, provider_id, posicao_final, valor_vencedor_centavos,
+  mediana_categoria_centavos, gerado_em)
+- audit_log(id, ator_id, entidade, entidade_id, acao, antes jsonb, depois jsonb, created_at)
+- provider_verifications(id, provider_id, documento_url, selfie_url, status, revisado_por,
+  revisado_em)
+Observação: payments, sinal e comissão devem existir no esquema, mas ficam desligados no MVP (V2).
+Valores monetários sempre em centavos (integer). Índices em requests(status, fecha_em),
+bids(request_id, valor_centavos) e requests/providers por localização.
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.42
+REGRAS DE NEGÓCIO (implemente no banco e no servidor, nunca só no front)
+RN01 Um pedido só abre com categoria, data futura, cidade, escopo ou quantidade e orçamento máximo.
+      Data mínima: 24 h à frente (pedido urgente é modo à parte, com leilão de 2 h).
+RN02 Cada cliente pode ter no máximo 3 leilões ativos ao mesmo tempo.
+RN03 Duração do leilão: 6 h, 24 h, 48 h (padrão), 72 h ou 7 dias, limitada para fechar pelo menos 24
+      h antes do evento.
+RN04 Orçamento máximo visível aos fornecedores por padrão. O cliente pode ocultá-lo; nesse caso,
+      lances acima do teto são aceitos, mas aparecem ao cliente com a marca "Acima do orçamento" e
+      ao fornecedor nenhuma informação sobre o teto.
+RN05 Só fornecedores com status verificado (CPF ou CNPJ, selfie), da categoria e dentro do raio de
+      atendimento veem o pedido e dão lance. Uma conta por CPF.
+RN06 Um lance ativo por fornecedor por leilão. Só pode reduzir o valor, nunca subir. Redução mínima:
+      R$ 10 ou 1%, o que for maior. Cada redução grava histórico.
+RN07 Todo lance exige valor, prazo de execução, lista do que está incluso (mínimo de 1 item),
+      validade e mensagem de até 300 caracteres.
+RN08 Visibilidade: o cliente vê todos os lances, com identidade e avaliação. O fornecedor vê só a
+      própria posição ("2º de 4") e o total de lances. Categorias de menor preço (frete) podem
+      mostrar o menor valor atual, via flag.
+RN09 Extensão automática: lance nos últimos 5 minutos estende o prazo em 5 minutos, no máximo 3
+      vezes.
+RN10 O cliente escolhe livremente e pode arrematar a qualquer momento. O sistema oferece a ordenação
+      "Recomendados" com score configurável (preço 45%, reputação 25%, prazo 15%, confiabilidade
+      10%, completude 5%).
+RN11 Lance anômalo: abaixo de 50% do orçamento máximo do pedido, ou abaixo de 70% da mediana da
+      categoria quando houver 10 ou mais contratos na base. Fica visível ao cliente com selo "Em
+      revisão" e entra na fila de moderação. Também vão para auditoria: mais de 10 lances em menos
+      de 1 hora no mesmo leilão, padrões de IP repetido e criação de várias contas.
+RN12 Arremate: cria contrato simples em PDF, recusa os demais lances, libera o contato direto e
+      notifica as partes. A plataforma é intermediadora e não parte do contrato de serviço.
+RN13 Cancelamento pelo cliente em até 24 h após o arremate: sem custo. Depois disso, aplica-se a
+      regra do contrato. Cancelamento pelo fornecedor após o arremate: penalidade de reputação,
+      possível suspensão, e o pedido reabre com prioridade para os demais lances.
+RN14 Avaliação bilateral obrigatória após a execução, nota de 1 a 5 e comentário. Fornecedor com
+      média abaixo de 3,5 por 3 meses seguidos é suspenso. Cliente com cancelamento abusivo
+      recorrente perde acesso a lances.
+RN15 Relatório pós-leilão para quem perdeu: posição final, valor vencedor, mediana da categoria e
+      diferenciais do lance vencedor (itens inclusos, prazo, nota), sem expor identidade de
+      concorrentes.
+RN16 Sem lance com 50% do prazo decorrido: ampliar o raio em 50% e reenviar notificações. Ao
+      encerrar vazio, sugerir ao cliente aumentar o teto ou mudar a data.
+RN17 Plano gratuito do fornecedor: 3 lances por mês. Planos pagos (V2): Pro com lances ilimitados,
+      relatórios e destaque; Prime com prioridade de notificação. Preços de partida: R$ 99,90 e R$
+      199,90, a validar.
+RN18 Pagamento intermediado, sinal e comissão: V2, com parceiro de pagamento regulado. Até lá, o
+      cliente paga o fornecedor diretamente.
+RN19 Disputas e denúncias vão para o admin; toda decisão grava em audit_log.
+RN20 LGPD: consentimento, exportação e exclusão de dados, log de acesso a dados pessoais, documentos
+      de verificação em bucket privado.
+REALTIME E SEGURANÇA
+- Use Supabase Realtime com um canal por pedido (request:{id}). O cliente dono do pedido escuta
+  inserções e atualizações em bids. O fornecedor recebe apenas eventos agregados (posição e
+  contagem) via função RPC ou broadcast, nunca a linha dos concorrentes.
+- Ative RLS em todas as tabelas. Políticas: cliente lê e altera só os próprios pedidos; cliente lê
+  todos os lances dos próprios pedidos; fornecedor lê só os próprios lances e pedidos elegíveis;
+  mensagens só entre as partes do contrato; admin com política própria.
+- Regras sensíveis (aceitar lance, estender prazo, calcular posição, fechar leilão) em funções
+  Postgres (security definer) ou rotas de servidor. Fechamento do leilão por job agendado (pg_cron
+  ou Vercel Cron) a cada minuto.
+- Validação com Zod nas bordas, rate limit nas rotas de lance, nenhuma chave secreta no cliente.
+- Job a cada minuto para fechar leilões, aplicar extensão, ampliar raio e sinalizar lances anômalos.
+  Todas as regras RN01 a RN20 devem valer mesmo chamando a API diretamente.
+SEED E TESTES
+- Seed com 3 categorias (Buffet, Fotografia, DJ e som), 12 fornecedores fictícios em Paulínia e
+  Campinas, 5 clientes e 8 pedidos em estados variados.
+- Testes unitários das regras RN02, RN06, RN09, RN10, RN11 e RN16. Teste de ponta a ponta do fluxo
+  principal: publicar pedido, receber 3 lances, aceitar, pagar sinal mock, concluir e avaliar.
+ETAPAS DE ENTREGA
+1. Setup, design system em tokens (claro e escuro), componentes base com todos os estados e landing
+   page.
+2. Autenticação, perfis, cadastro de fornecedor em 3 etapas e verificação manual no admin.
+3. Publicação de pedido com rascunho salvo, limite de 3 leilões ativos e notificação aos
+
+arremateDocumento mestre  |  v2.1
+Confidencial. Conceito em validação.43
+   fornecedores elegíveis.
+4. Lances em tempo real, posição do fornecedor, extensão automática, filtros, ordenação e fechamento
+   do leilão.
+5. Arremate, contrato simples em PDF, liberação do contato e avaliações.
+6. Moderação de lances anômalos, auditoria, relatório pós-leilão e painel admin.
+7. Estados vazios, skeletons, toasts, modais, microinterações e confete do arremate, com prefers-
+   reduced-motion.
+8. Polimento: acessibilidade, SEO, Open Graph, performance e checklist final.
+Ao fim de cada etapa: liste o que foi feito, como rodar, o que testar e qual é a próxima etapa.
+CRITÉRIOS DE ACEITE DO MVP
+- Um cliente publica um pedido em menos de 5 minutos no celular, com rascunho salvo.
+- Um fornecedor elegível recebe a notificação e envia um lance em menos de 1 minuto.
+- O cliente vê o lance aparecer em menos de 2 segundos, sem recarregar.
+- Nenhuma regra RN01 a RN20 pode ser burlada pela API.
+- Todo componente tem os estados de repouso, hover, foco, ativo, carregando, erro, vazio e
+  desabilitado.
+- Lighthouse acima de 90 em desempenho, acessibilidade e SEO na landing; contraste AA em todas as
+  telas.
+- Nenhum emoji, nenhum número ou depoimento inventado, nenhum gradiente decorativo e nenhuma tela
+  com cara de template padrão.

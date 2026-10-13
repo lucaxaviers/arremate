@@ -1,0 +1,141 @@
+PROMPT PARA IA: CONSTRUIR O MVP DO ARREMATE
+
+PAPEL
+Você é um engenheiro full-stack sênior com bom olho para design de produto. Vai construir do zero o MVP do "Arremate", plataforma de leilão reverso de serviços locais. Trabalhe por etapas: rode e teste cada uma antes de seguir e me avise quando precisar de uma decisão minha. Não invente funcionalidades fora do escopo abaixo e não invente números, depoimentos ou métricas na interface.
+
+O PRODUTO
+O cliente publica o que precisa e o orçamento máximo, por exemplo: "buffet para 120 pessoas, em Paulínia, daqui a 3 meses, até R$ 15.000". Fornecedores verificados da região, que atendem a categoria e o raio, são avisados e enviam lances com valor, prazo, o que está incluso e uma mensagem. O cliente acompanha os lances em tempo real, filtra, ordena, compara e arremata o escolhido. Ao arrematar, gera-se um contrato simples em PDF e o contato direto é liberado. Depois da execução, os dois se avaliam. Quem perdeu recebe um relatório do leilão.
+Frase central da marca: "Você diz o que precisa. O mercado diz quanto custa. Você decide."
+Idioma da interface: português do Brasil. Moeda: BRL. Fuso: America/Sao_Paulo.
+Fora do escopo do MVP: pagamento intermediado (sinal e escrow ficam para a V2), chat em tempo real, aplicativo nativo, categorias além de eventos, reformas e frete, múltiplas cidades ao mesmo tempo. Deixe interfaces prontas (PaymentProvider, ChatProvider) com implementação vazia ou mock.
+
+STACK OBRIGATÓRIA
+- Next.js 15 (App Router) com TypeScript estrito
+- Tailwind CSS v4 + shadcn/ui + ícones Lucide (somente Lucide, traço 1,5 px)
+- Supabase: Postgres, Auth (e-mail e Google), Realtime, Storage e Row Level Security
+- Deploy na Vercel
+- Zod, React Hook Form, TanStack Query onde fizer sentido
+- Notificações: push web e e-mail com Resend; interface de WhatsApp só como contrato, com implementação mock
+- Geração do contrato simples em PDF no servidor
+- Fontes: Inter (títulos e corpo) e JetBrains Mono (valores em reais, contadores e números de métricas)
+
+IDENTIDADE VISUAL E DESIGN SYSTEM
+Estilo: sóbrio, preciso e confiável, como um jornal financeiro moderno. Inspirações de sensação: Linear, Stripe, Vercel, Superhuman, Raycast e Notion. Zero emojis na interface. Zero gradiente decorativo, zero blobs, zero ícone 3D, zero roxo.
+Tokens de cor (modo claro):
+- ink #0A0A0B (texto principal e botão escuro), graphite #26262B, slate #57534E (texto secundário), page #FAFAF9 (fundo da página), surface #FFFFFF (cards), muted #F5F5F4, line #E7E5E4
+- accent #F59E0B (âmbar): só em ação principal, melhor lance, destaque de ranking e estado ativo de filtro. Texto sobre âmbar sempre ink.
+- amberText #B45309: usar para texto, ícone e link sobre fundo claro (o âmbar puro não tem contraste suficiente sobre branco)
+- success #10B981 (fundo e ícone) e successText #047857 (texto); error #EF4444 (fundo e ícone) e errorText #DC2626 (texto); warning #F97316; info #3B82F6
+Modo escuro: page #0A0A0B, surface #141416, line #26262B, text #FAFAF9, secundário #A1A1AA. Implemente com variáveis CSS desde o início.
+Tipografia: H1 48 a 64, H2 32 a 40, H3 24, corpo 16, micro 14. Entrelinha curta nos títulos, largura máxima de texto corrido de 65ch. Uppercase só em micro-rótulos de até 3 palavras.
+Forma: espaçamento em múltiplos de 4 (4, 8, 12, 16, 24, 32, 48, 64, 96). Raio 10 (botões e inputs) e 16 (cards). Cards usam borda de 1 px; sombra só em modal, dropdown e toast. Fundo de página diferente do fundo de card.
+Botões: altura 48 px, alvo de toque mínimo de 44 px no mobile. Primário âmbar com texto ink; secundário com borda; ghost sem borda; escuro (ink) para "Arrematar" nos cards da lista; destrutivo vermelho sempre com modal de confirmação. Regra: um botão primário âmbar por região de decisão (no card do melhor lance, no hero, no modal de confirmação).
+Foco: anel de 2 px com offset de 2 px, ink no modo claro e âmbar no modo escuro.
+Avatares: círculo limpo. Ícones: Lucide, tamanhos 16, 20, 24 e 32.
+Acessibilidade: contraste AA, navegação por teclado, labels reais, estado nunca só por cor, aria-live nos toasts, focus trap nos modais, prefers-reduced-motion respeitado.
+Mobile first: 80% do uso esperado é no celular.
+
+MICROINTERAÇÕES E FEEDBACK
+Toda ação tem resposta visível em até 300 ms; acima disso, skeleton com a mesma forma do conteúdo (nunca spinner central em tela cheia).
+Durações: hover 150 ms ease-out; active (scale 0,97) 180 ms; modal abre em 250 ms e fecha em 180 ms; toast entra em 300 ms e sai em 200 ms; entrada de novo lance 300 ms com easing cubic-bezier(0.16, 1, 0.3, 1); reordenação de lista 300 ms (técnica FLIP). Pulso de borda âmbar do lance novo: 600 ms. Confete no arremate: uma vez, até 800 ms, 40 partículas, sem som; se prefers-reduced-motion estiver ativo, mostrar só o modal de sucesso. Animar só transform e opacity. No máximo 3 elementos animados ao mesmo tempo.
+Timer do leilão em JetBrains Mono, formato "2d 4h 18m 32s": cinza com mais de 24 h, âmbar escuro com menos de 24 h, vermelho com menos de 1 h (com pulso suave de opacidade e o texto "Encerra em breve", para não depender só de cor), "Encerrado" quando acaba.
+Lance novo: card entra no topo com slide de 24 px e fade, borda âmbar pulsa; se o cliente estiver em outra tela, toast "Novo lance recebido: R$ 11.800". Primeiro lugar: borda de 2 px âmbar e selo "Melhor lance". Arrematado: borda verde e os demais cards com 60% de opacidade.
+Fornecedor: ao mudar de posição, o painel atualiza com fundo verde claro (subiu) ou vermelho claro (desceu) por 2 s e com texto, por exemplo "Você subiu para 1º lugar".
+Erros de formulário aparecem abaixo do campo, com borda vermelha e ícone de alerta, e o foco vai para o primeiro campo com erro. Erros de rede e de servidor usam toast com botão "Tentar novamente". Mensagem de login específica: "A senha está incorreta. Tente novamente ou recupere o acesso."
+Vibração tátil (navigator.vibrate) só como melhoria opcional; não funciona no iOS Safari e nada pode depender dela.
+Estados obrigatórios por componente: repouso, hover, foco, ativo, carregando, erro, vazio e desabilitado. Todo estado vazio tem ilustração simples (SVG de traço 1,5 px, preto com um toque de âmbar), texto e CTA.
+Toasts: sucesso 4 s, erro até dispensar, aviso 5 s, info 4 s; no máximo 3 visíveis; um toast por ação.
+
+FILTROS E ORDENAÇÃO
+Tela de comparação de lances (cliente), filtros: faixa de preço (slider duplo até o orçamento máximo), avaliação mínima (3+, 4+, 4,5+, 5), prazo máximo (24 h, 3 dias, 7 dias, 15 dias), verificado, com portfólio, com garantia. Chips e toggles aplicam na hora; sliders aplicam após 300 ms de debounce. Chip ativo com fundo âmbar e texto ink. Contador "Filtros · 3", botão "Limpar tudo" e contagem "X lances encontrados". Desktop: barra sticky no topo da lista. Mobile: bottom sheet.
+Ordenação do cliente: Recomendados (padrão), Menor preço, Maior avaliação, Menor prazo, Mais contratos, Mais recentes. Score de Recomendados, com pesos configuráveis: preço 45%, reputação 25%, prazo 15%, confiabilidade (resposta e cumprimento) 10%, completude do lance 5%.
+Feed do fornecedor, filtros: categoria (multi), distância (5, 10, 25, 50, 100 km), data de execução, faixa de valor, número de lances, urgência (encerra em 24 h). Ordenação: mais recentes (padrão), encerrando em breve, maior valor, menos concorridos, mais próximos.
+Filtros primeiro, ordenação depois. A ordenação reordena em memória, sem recarregar. Persistir filtros e ordenação por usuário e por tela. Estado vazio após filtro: "Nenhum lance corresponde aos filtros. Tente ampliar a busca." com botão "Limpar filtros".
+
+ROTAS E TELAS
+São 35 telas ao todo; o primeiro release cobre 27 (marcadas com *).
+Público: /* (landing cliente), /fornecedores*, /como-funciona, /precos, /termos*, /privacidade*, 404*
+Autenticação: /entrar*, /cadastro*, /cadastro-fornecedor* (3 etapas: dados, verificação por CPF/CNPJ e selfie, segmentos e região), /recuperar-senha*, /verificar-email
+Cliente: /painel-cliente*, /painel-cliente/novo* (formulário guiado com rascunho salvo), /painel-cliente/novo/sucesso*, /painel-cliente/leilao/[id]* (comparar lances), /painel-cliente/fornecedor/[id]*, /painel-cliente/contrato/[id]*, /painel-cliente/historico, /painel-cliente/avaliar/[id]*
+Fornecedor: /painel-fornecedor*, /painel-fornecedor/leiloes*, /painel-fornecedor/leilao/[id]* (enviar e editar lance), /painel-fornecedor/lances*, /painel-fornecedor/relatorio/[id] (por que você perdeu), /painel-fornecedor/config*, /painel-fornecedor/plano, /painel-fornecedor/perfil*
+Admin: /admin*, /admin/leiloes*, /admin/fornecedores*, /admin/auditoria, /admin/metricas
+
+LANDING PAGE (/)
+Cliente (/): navegação fixa com blur ao rolar; hero com título "Você diz o que precisa. O mercado diz quanto custa.", subtítulo "Publique sua necessidade uma vez. Receba lances de fornecedores da sua região. Escolha o melhor.", campo "O que você precisa?" e botão âmbar "Publicar necessidade", microtexto "Você só cria a conta na hora de publicar. Sem cartão."; à direita um mock de leilão com 3 lances chegando em sequência (marcado como exemplo); faixa de confiança; "O problema" em 3 cards (pedir orçamento é lento, comparar é pior, fechar é sorte); como funciona em 3 passos com mocks de tela; categorias (Buffet, Fotografia, DJ, Decoração, Frete, Reforma); números de valor; FAQ; CTA final em fundo ink; rodapé.
+IMPORTANTE: os números da seção de valor e da prova social (tempo até o primeiro lance, economia média, quantidade de serviços arrematados) ficam como campos configuráveis, ocultos até existirem dados reais do piloto. Depoimentos também ficam ocultos até haver pessoas reais. Não use banco de imagens.
+Fornecedor (/fornecedores): hero "Receba clientes que já querem contratar. Sem gastar com anúncio."; problema ("Você responde 10 orçamentos e fecha 2. Não sabe por que perdeu os outros 8."); como funciona em 4 passos; planos em 3 colunas; FAQ do fornecedor; CTA "Cadastrar como fornecedor".
+
+MODELO DE DADOS (Postgres)
+Crie migrations SQL versionadas com:
+- profiles(id uuid pk = auth.users.id, role enum cliente|fornecedor|admin, nome, telefone, cidade, created_at)
+- categories(id, slug, nome, ativa)
+- providers(id, profile_id, nome_fantasia, documento, tipo enum mei|pj|pf, descricao, status enum pendente|verificado|suspenso, nota_media, total_avaliacoes, taxa_resposta, raio_km, cidade_base, lat, lng)
+- provider_categories(provider_id, category_id)
+- requests(id, customer_id, category_id, titulo, descricao, data_evento, cidade, lat, lng, quantidade, teto_centavos, teto_visivel boolean default true, status enum rascunho|aberto|encerrado|contratado|em_execucao|concluido|expirado|cancelado|em_disputa, abre_em, fecha_em, extensoes int default 0)
+- bids(id, request_id, provider_id, valor_centavos, inclui text[], observacoes, validade_ate, status enum ativo|retirado|aceito|recusado|expirado, created_at)
+- bid_revisions(id, bid_id, valor_anterior_centavos, valor_novo_centavos, created_at)
+- contracts(id, request_id, bid_id, customer_id, provider_id, valor_centavos, sinal_centavos, comissao_pct, status, aceito_em, concluido_em)
+- payments(id, contract_id, tipo enum sinal|saldo|repasse|reembolso, valor_centavos, status, provider_ref, created_at)
+- messages(id, contract_id, sender_id, corpo, created_at)
+- reviews(id, contract_id, autor_id, alvo_id, nota int 1..5, comentario, created_at)
+- disputes(id, contract_id, aberta_por, motivo, status, resolucao)
+- notifications(id, profile_id, tipo, payload jsonb, lida_em, created_at)
+- plans(id, nome, preco_centavos, lances_por_mes, destaque boolean) e subscriptions(id, provider_id, plan_id, status, inicio, fim)
+- loss_reports(id, request_id, provider_id, posicao_final, valor_vencedor_centavos, mediana_categoria_centavos, gerado_em)
+- audit_log(id, ator_id, entidade, entidade_id, acao, antes jsonb, depois jsonb, created_at)
+- provider_verifications(id, provider_id, documento_url, selfie_url, status, revisado_por, revisado_em)
+Observação: payments, sinal e comissão devem existir no esquema, mas ficam desligados no MVP (V2).
+Valores monetários sempre em centavos (integer). Índices em requests(status, fecha_em), bids(request_id, valor_centavos) e requests/providers por localização.
+
+REGRAS DE NEGÓCIO (implemente no banco e no servidor, nunca só no front)
+RN01 Um pedido só abre com categoria, data futura, cidade, escopo ou quantidade e orçamento máximo. Data mínima: 24 h à frente (pedido urgente é modo à parte, com leilão de 2 h).
+RN02 Cada cliente pode ter no máximo 3 leilões ativos ao mesmo tempo.
+RN03 Duração do leilão: 6 h, 24 h, 48 h (padrão), 72 h ou 7 dias, limitada para fechar pelo menos 24 h antes do evento.
+RN04 Orçamento máximo visível aos fornecedores por padrão. O cliente pode ocultá-lo; nesse caso, lances acima do teto são aceitos, mas aparecem ao cliente com a marca "Acima do orçamento" e ao fornecedor nenhuma informação sobre o teto.
+RN05 Só fornecedores com status verificado (CPF ou CNPJ, selfie), da categoria e dentro do raio de atendimento veem o pedido e dão lance. Uma conta por CPF.
+RN06 Um lance ativo por fornecedor por leilão. Só pode reduzir o valor, nunca subir. Redução mínima: R$ 10 ou 1%, o que for maior. Cada redução grava histórico.
+RN07 Todo lance exige valor, prazo de execução, lista do que está incluso (mínimo de 1 item), validade e mensagem de até 300 caracteres.
+RN08 Visibilidade: o cliente vê todos os lances, com identidade e avaliação. O fornecedor vê só a própria posição ("2º de 4") e o total de lances. Categorias de menor preço (frete) podem mostrar o menor valor atual, via flag.
+RN09 Extensão automática: lance nos últimos 5 minutos estende o prazo em 5 minutos, no máximo 3 vezes.
+RN10 O cliente escolhe livremente e pode arrematar a qualquer momento. O sistema oferece a ordenação "Recomendados" com score configurável (preço 45%, reputação 25%, prazo 15%, confiabilidade 10%, completude 5%).
+RN11 Lance anômalo: abaixo de 50% do orçamento máximo do pedido, ou abaixo de 70% da mediana da categoria quando houver 10 ou mais contratos na base. Fica visível ao cliente com selo "Em revisão" e entra na fila de moderação. Também vão para auditoria: mais de 10 lances em menos de 1 hora no mesmo leilão, padrões de IP repetido e criação de várias contas.
+RN12 Arremate: cria contrato simples em PDF, recusa os demais lances, libera o contato direto e notifica as partes. A plataforma é intermediadora e não parte do contrato de serviço.
+RN13 Cancelamento pelo cliente em até 24 h após o arremate: sem custo. Depois disso, aplica-se a regra do contrato. Cancelamento pelo fornecedor após o arremate: penalidade de reputação, possível suspensão, e o pedido reabre com prioridade para os demais lances.
+RN14 Avaliação bilateral obrigatória após a execução, nota de 1 a 5 e comentário. Fornecedor com média abaixo de 3,5 por 3 meses seguidos é suspenso. Cliente com cancelamento abusivo recorrente perde acesso a lances.
+RN15 Relatório pós-leilão para quem perdeu: posição final, valor vencedor, mediana da categoria e diferenciais do lance vencedor (itens inclusos, prazo, nota), sem expor identidade de concorrentes.
+RN16 Sem lance com 50% do prazo decorrido: ampliar o raio em 50% e reenviar notificações. Ao encerrar vazio, sugerir ao cliente aumentar o teto ou mudar a data.
+RN17 Plano gratuito do fornecedor: 3 lances por mês. Planos pagos (V2): Pro com lances ilimitados, relatórios e destaque; Prime com prioridade de notificação. Preços de partida: R$ 99,90 e R$ 199,90, a validar.
+RN18 Pagamento intermediado, sinal e comissão: V2, com parceiro de pagamento regulado. Até lá, o cliente paga o fornecedor diretamente.
+RN19 Disputas e denúncias vão para o admin; toda decisão grava em audit_log.
+RN20 LGPD: consentimento, exportação e exclusão de dados, log de acesso a dados pessoais, documentos de verificação em bucket privado.
+
+REALTIME E SEGURANÇA
+- Use Supabase Realtime com um canal por pedido (request:{id}). O cliente dono do pedido escuta inserções e atualizações em bids. O fornecedor recebe apenas eventos agregados (posição e contagem) via função RPC ou broadcast, nunca a linha dos concorrentes.
+- Ative RLS em todas as tabelas. Políticas: cliente lê e altera só os próprios pedidos; cliente lê todos os lances dos próprios pedidos; fornecedor lê só os próprios lances e pedidos elegíveis; mensagens só entre as partes do contrato; admin com política própria.
+- Regras sensíveis (aceitar lance, estender prazo, calcular posição, fechar leilão) em funções Postgres (security definer) ou rotas de servidor. Fechamento do leilão por job agendado (pg_cron ou Vercel Cron) a cada minuto.
+- Validação com Zod nas bordas, rate limit nas rotas de lance, nenhuma chave secreta no cliente.
+- Job a cada minuto para fechar leilões, aplicar extensão, ampliar raio e sinalizar lances anômalos. Todas as regras RN01 a RN20 devem valer mesmo chamando a API diretamente.
+
+SEED E TESTES
+- Seed com 3 categorias (Buffet, Fotografia, DJ e som), 12 fornecedores fictícios em Paulínia e Campinas, 5 clientes e 8 pedidos em estados variados.
+- Testes unitários das regras RN02, RN06, RN09, RN10, RN11 e RN16. Teste de ponta a ponta do fluxo principal: publicar pedido, receber 3 lances, aceitar, pagar sinal mock, concluir e avaliar.
+
+ETAPAS DE ENTREGA
+1. Setup, design system em tokens (claro e escuro), componentes base com todos os estados e landing page.
+2. Autenticação, perfis, cadastro de fornecedor em 3 etapas e verificação manual no admin.
+3. Publicação de pedido com rascunho salvo, limite de 3 leilões ativos e notificação aos fornecedores elegíveis.
+4. Lances em tempo real, posição do fornecedor, extensão automática, filtros, ordenação e fechamento do leilão.
+5. Arremate, contrato simples em PDF, liberação do contato e avaliações.
+6. Moderação de lances anômalos, auditoria, relatório pós-leilão e painel admin.
+7. Estados vazios, skeletons, toasts, modais, microinterações e confete do arremate, com prefers-reduced-motion.
+8. Polimento: acessibilidade, SEO, Open Graph, performance e checklist final.
+Ao fim de cada etapa: liste o que foi feito, como rodar, o que testar e qual é a próxima etapa.
+
+CRITÉRIOS DE ACEITE DO MVP
+- Um cliente publica um pedido em menos de 5 minutos no celular, com rascunho salvo.
+- Um fornecedor elegível recebe a notificação e envia um lance em menos de 1 minuto.
+- O cliente vê o lance aparecer em menos de 2 segundos, sem recarregar.
+- Nenhuma regra RN01 a RN20 pode ser burlada pela API.
+- Todo componente tem os estados de repouso, hover, foco, ativo, carregando, erro, vazio e desabilitado.
+- Lighthouse acima de 90 em desempenho, acessibilidade e SEO na landing; contraste AA em todas as telas.
+- Nenhum emoji, nenhum número ou depoimento inventado, nenhum gradiente decorativo e nenhuma tela com cara de template padrão.
